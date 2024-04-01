@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Jpeg/GameTime.png">
+  <link rel="shortcut icon" href="Jpeg/GameTime.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameTime</title>
+
+  <style>
+  
+html {
+      background-color: black;
+    }
+
+.Fon { 
+	 margin: auto;
+	 width: 1000px;
+	 height: 600px; 
+     background-image: url('Jpeg/GameTime.jpg');	 
+     background-color: #1E1E1E;
+     background-repeat: no-repeat;
+    }
+
+.Classic{
+      width: 176.5px;
+      height: 176.5px;
+      margin: 1px;
+	  background-color: rgba(0, 0, 0, 0);
+      display: inline-block;
+      cursor: pointer;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      line-height: 150px;
+	  position: absolute;
+    }
+
+.loader1{
+     width: 165px; 
+     aspect-ratio: 1;
+     background:
+     linear-gradient(to bottom right,#0000 calc(50% - 40px),#fff 50%,#0000 calc(50% + 40px)) 
+     bottom right/calc(200% + 80px) calc(260% + 80px) 
+     rgba(255, 166, 0, 0);
+     animation: l8 7s infinite; /* backwards */
+     transform: rotate(45deg);	 
+     translate(-50% -50%);
+	 position: relative;
+	 left: 418px;
+     top: 218px;
+       }   
+@keyframes l8 {
+     100% {background-position: top left}
+       }
+	   
+.audio{
+   opacity: 0.2;  /* Թաանցիկ */
+     width: 20px;
+     height: 20px;
+   	 position: relative;
+	 left: 0px;
+     top: 0px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="Fon">
+    <div class="loader1">
+  </div>
+  
+        <audio controls autoplay class="audio">
+        <source src="Audio/Nino Rota - The Godfather theme.mp3" type="audio/mpeg">
+           </audio>
+  
+  <script>
+        setTimeout(function(){
+            window.location.href = 'html/Menu.html';
+        }, 7000);
+  </script>
+</body>
+
+</html>

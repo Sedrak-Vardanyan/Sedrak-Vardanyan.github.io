@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Jpeg/GameTime.png">
+  <link rel="shortcut icon" href="Jpeg/GameTime.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameTime</title>
+
+  <style>
+    html {
+      background-color: cyan;
+    }
+
+    .Fon {
+      margin: auto;
+      width: 976px;
+      height: 600px;
+      background-color: blue;
+      background-image: url('Jpeg/GameTime.jpg');
+      background-repeat: no-repeat;
+    }
+.image{
+      width: 150px;
+      height: 150px;
+      margin: 21px;
+      display: inline-block;
+      cursor: pointer;
+      background-size: cover;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      line-height: 150px;
+      transition: background-image 1.3s ease, transform 0.5s ease;
+      transform-style: preserve-3d;
+	   background-color: red;
+
+       }    
+.image img {
+      border-radius: 8px; 
+           }
+.Win_A,
+.Win_B,
+.Win_C,
+.Win_D,
+.Win_E{
+      width: 150px;
+      height: 50px;
+      margin: 21px;
+      display: inline-block;
+      cursor: pointer;
+	  background-color: red;
+      border-radius: 8px; 
+	  }		
+	  
+.N_0, .N_1, .N_2, .N_3, .N_4, .N_5, .N_6, .N_7, .N_8, .N_9{
+      width: 50px;
+      height: 50px;
+      margin: 21px;
+	  font-size: 45px;
+	  color: White;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+	  background-color: red;
+      border-radius: 8px; 
+}
+		 
+.menu {
+      margin: auto;
+      width: 300px;
+      height: 80px;
+      background-color: red;
+      display: inline-block;
+      }
+
+.audio {
+      margin: 25px;
+      width: 200px;
+      height: 30px;
+    }
+
+.back {
+      width: 60px;
+      height: 60px;
+      margin: 15px;
+      border-radius: 8px;
+      background-image: url('Jpeg/Home.png')
+    }
+
+.res {
+      width: 60px;
+      height: 60px;
+      margin: 15px;
+      border-radius: 8px;
+      background-image: url('Jpeg/Reset_.png')
+    }
+
+.play {
+      width: 60px;
+      height: 60px;
+      margin: 15px;
+      border-radius: 8px;
+      background-image: url('Jpeg/Play.png')
+    }
+  </style>
+</head>
+
+<body>
+  <p style="background-image: url('Jpeg/GameTime.jpg');"></p>
+
+  <div class="menu">
+
+    <a href="#">
+      <div class="back"></div>
+    </a>
+    <a href="#">
+      <div class="res"></div>
+    </a>
+    <a href="#">
+      <div class="play"></div>
+    </a>
+  </div>
+
+  <div class="Fon">
+  	<div class="N_0">1</div>	
+	<div class="N_1">2</div>
+	<div class="N_2">3</div>
+	<div class="N_3">4</div>
+	<div class="N_4">5</div>
+	<div class="N_5">6</div>
+	<div class="N_6">7</div>
+	<div class="N_7">8</div>
+	<div class="N_8">9</div>
+	<div class="N_9">10</div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Red.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Red.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Red.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Red.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Red.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Red.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Sherif.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Don.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Mafia.jpg"></div>
+    <div class="image" onclick="changeImage(this)"><img src="Jpeg/Mafia.jpg"></div>
+	<div class="Win_A" onclick="changeImage1(this)"><img src="Jpeg/Win_A.png"></div>
+	<div class="Win_B"> </div>
+	<div class="Win_C"> </div>
+	<div class="Win_D"> </div>
+	<div class="Win_E"> </div>
+
+
+
+  </div>
+
+  <script>
+
+    function changeImage(element) {
+      var image = element.querySelector('img');  // Получите изображение внутри div-а
+         image.src = 'Jpeg/PlayesCard.jpg'; // Замените исходное изображение на новое 
+    }
+	    function changeImage1(element) {
+      var Win_A = element.querySelector('img');  // Получите изображение внутри div-а
+         Win_A.src = 'Jpeg/Win_A1.png'; // Замените исходное изображение на новое 
+    }
+	
+  </script>
+</body>
+
+</html>

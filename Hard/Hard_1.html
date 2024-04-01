@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Jpeg/GameTime.png">
+  <link rel="shortcut icon" href="Jpeg/GameTime.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameTime</title>
+
+  <style>
+    html {
+      background-color: black;
+    }
+
+    .Fon { 
+	 margin: auto;
+	 width: 1000px;
+	 height: 600px;       
+     background-color: black;
+     background-image: url('Jpeg/GameTime.jpg');
+     background-repeat: no-repeat;
+    }
+
+    .card {
+      width: 100px;
+      height: 150px;
+      margin: 21px;
+      border-radius: 8px;
+      display: inline-block;
+      cursor: pointer;
+      background-image: url('Jpeg/PlayesCard.jpg');
+      background-size: cover;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      line-height: 150px;
+      transition: background-image 1.3s ease, transform 0.5s ease;
+      transform-style: preserve-3d;
+    }
+
+    .card.flipped {
+      transform: rotateX(180deg) rotateY(-180deg) rotateX(180deg) rotateY(-180deg);
+
+    }
+
+    .card.RED {
+      background-image: url('PlayesCard.jpg');
+    }
+
+    .card.SHERIF {
+      background-image: url('PlayesCard.jpg');
+    }
+
+    .card.DON {
+      background-image: url('PlayesCard.jpg');
+    }
+
+    .card.MAFIA {
+      background-image: url('PlayesCard.jpg');
+    }
+
+.menu {
+	  margin: auto;
+      width: 300px;
+      height: 80px;
+      background-color: black;
+      display: inline-block;
+    }
+	
+.audio {
+      margin: 25px;
+      width: 200px;
+      height: 30px;
+    }
+
+.back{
+      width: 60px;
+      height: 60px;
+	  margin: 15px;
+	  border-radius: 8px;
+	/*  background-color: red; */
+	  background-image: url('Jpeg/Home.png')
+      }
+.res{
+      width: 60px;
+      height: 60px;
+	  margin: 15px;
+	  border-radius: 8px;
+	 /* background-color: red; */
+	  background-image: url('Jpeg/Reset_.png')
+}
+.play{
+      width: 60px;
+      height: 60px;
+	  margin: 15px;
+	  border-radius: 8px;
+	 /* background-color: red; */
+	  background-image: url('Jpeg/Play.png')
+}
+  </style>
+</head>
+
+<body>
+  <p style="background-image: url('Jpeg/GameTime.jpg');"></p>
+
+  <div class="menu">
+    <audio controls class="audio">
+       <source src="Audio/Nino Rota - The Godfather theme.mp3" type="audio/mpeg">
+            </audio>
+  <a href="index.html"><div class="back"></div></a>
+    <a href="Hard_v0.2.html"> <div class="res"> </div> </a>
+        <a href="#"><div class="play"></div></a>	
+  </div>
+  
+  <div class="Fon">
+    <div id="cards-container"></div>
+  </div>
+
+  <audio id="clickSound" src="Audio/Clik-Gun.mp3"></audio>
+
+  <script>
+        // Создаем массив с буквами карт
+    const cardLetters = ['Jpeg/MEDIC', 'Jpeg/MANIAC', 'Jpeg/NEWS', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/GODFATER', 'Jpeg/SHERIF', 'Jpeg/DON', 'Jpeg/MAFIA', 'Jpeg/MAFIA', 'Jpeg/MAFIA'];
+
+    // Перемешиваем массив
+    const shuffledCards = shuffleArray(cardLetters);
+
+	  // Функция переворачивания карты по клику
+     function flipCard(cardElement) {
+    cardElement.classList.toggle('flipped');
+     }
+
+    // Создаем HTML элементы для каждой карты и добавляем их на страницу
+    const cardsContainer = document.getElementById('cards-container');
+    shuffledCards.forEach(letter => {
+      const cardElement = document.createElement('div');
+      cardElement.classList.add('card', letter);
+      cardElement.addEventListener('click', () => {
+	  flipCard(cardElement);   // Добавляем прослушиватель событий к каждой карточке для вызова функции FlipCard
+      revealAndRemoveCard(cardElement, letter);
+      playClickSound(); // Воспроизвести звук щелчка при щелчке карты
+      });
+      cardsContainer.appendChild(cardElement);
+      });
+	
+    // Функция для открытия карты и удаления из списка
+    function revealAndRemoveCard(cardElement, letter) {
+      cardElement.style.backgroundImage = `url('${letter}.jpg')`;
+      setTimeout(() => {
+        cardsContainer.removeChild(cardElement);
+        // После удаления всех карт, переход на следующую страницу через 5 секунд
+        if (cardsContainer.children.length === 0) {
+          setTimeout(() => {
+            window.location.href = '#'; // переход на следующую страницу
+          }, 5000);
+        }			
+      }, 3000); // Можете изменить задержку по вашему усмотрению
+    }
+
+    // Функция для перемешивания массива
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Функция для воспроизведения звука при клике
+    function playClickSound() {
+      const clickSound = document.getElementById('clickSound');
+      clickSound.play();
+    }
+	
+  </script>
+</body>
+
+</html>

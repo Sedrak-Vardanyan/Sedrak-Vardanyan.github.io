@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Jpeg/GameTime.png">
+  <link rel="shortcut icon" href="Jpeg/GameTime.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameTime</title>
+
+  <style>
+    html {
+      background-color: black;
+    }
+
+    .Fon {
+      margin: auto;
+      width: 1000px;
+      height: 600px;
+      background-color: black;
+      background-image: url('GameTime.jpg');
+      background-repeat: no-repeat;
+    }
+
+    .Classic,
+    .Godfather,
+    .Hard {
+      width: 286px;
+      height: 517px;
+      margin: 21px;
+      border-radius: 8px;
+      display: inline-block;
+      cursor: pointer;
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      line-height: 150px;
+    }
+
+    .Classic {
+      background-image: url('Jpeg/Classic.jpg');
+      background-size: cover;
+    }
+
+    .Godfather {
+      background-image: url('Jpeg/Godfater.jpg');
+      background-size: cover;
+    }
+
+    .Hard {
+      background-image: url('Jpeg/Hard.jpg');
+      background-size: cover;
+    }
+
+    .nav {
+      margin: auto;
+      width: 300px;
+      height: 80px;
+      background-color: black;
+      display: inline-block;
+    }
+
+    .audio {
+      margin: 25px;
+      width: 200px;
+      height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <p style="background-image: url('Jpeg/GameTime.jpg');"></p>
+
+  <div class="nav"></div>
+
+  <div class="Fon">
+  <a onclick="playSound('Clik-Gun.mp3')"></a>
+    <onclick="playSound('Clik-Gun.mp3')">
+      <div class="Classic"></div>
+    </a>
+	
+    <a href="Hard_v0.2.html">
+      <div class="Godfather"></div>
+    </a>
+	
+  
+	  <a href="Hard_v0.2.html" onclick="playSound('Clik-Gun.mp3')"><div class="Hard"></div></a>
+	  
+  
+	
+	
+  </div>
+
+  <script>
+    function playSound(soundFile) {
+      var audio = new Audio(soundFile);
+      audio.play();
+    }
+  </script>
+
+</body>
+
+</html>

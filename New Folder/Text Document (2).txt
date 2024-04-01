@@ -1,0 +1,40 @@
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var draggedElement = document.getElementById(data);
+        var targetElement = ev.target;
+
+        // Проверяем, что переносимый элемент - внутри внешнего div
+        if (targetElement.classList.contains("outerDiv")) {
+            // Если внешний div пуст, то просто перемещаем в него элемент
+            if (targetElement.children.length === 0) {
+                targetElement.appendChild(draggedElement);
+            } else {
+                // Если внешний div не пуст, то добавляем элемент перед последним элементом
+                targetElement.insertBefore(draggedElement, targetElement.lastChild);
+            }
+        }
+    }
+
+    // Добавляем обработчик для удаления innerDiv при двойном щелчке
+    document.addEventListener('dblclick', function (event) {
+        var target = event.target;
+        // Проверяем, является ли целевой элемент innerDiv
+        if (target.classList.contains("innerDiv") || target.classList.contains("innerDiv2")) {
+            // Проверяем, что родитель целевого элемента - outerDiv
+            if (target.parentElement.classList.contains("outerDiv")) {
+                // Удаляем целевой элемент
+                target.remove();
+            }
+        }
+    });
+</script>

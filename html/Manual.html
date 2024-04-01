@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Jpeg/GameTime.png">
+  <link rel="shortcut icon" href="Jpeg/GameTime.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameTime</title>
+<style>
+
+html {
+      background-color: #1E1E1E;
+    }	
+	
+    .outerDiv,
+	.outerDiv1{
+        position: relative;        
+	    width: 100px;
+        height: 150px;
+        border-radius: 8px;
+        display: inline-block;
+        margin: 8px;
+        line-height: 150px;
+	    background-color: rgba(0, 0, 0, 0);
+        border-style: solid;
+        border-width: 1px;
+		border-color: rgba(0, 0, 0, 0);
+		overflow: hidden;      /* նկարները դուրս չգան դիվի սահմաներից */
+	}	
+	.outerDiv1{
+	        cursor: pointer;
+	}		
+	
+	.outerDiv{
+	    border-width: 2px;
+		border-color: #0F371C;
+		/*opacity: 0.3;*/
+	}
+    .innerDiv,
+	.innerDiv2,
+	.innerDiv3,
+	.innerDiv4,
+	.innerDiv5,
+	.innerDiv6,
+	.innerDiv7,
+	.innerDiv8{
+        width: 100px;
+        height: 150px;
+        position: static;
+		background-size: cover;
+		border-radius: 8px;
+
+	}
+	
+    .innerDiv{
+        background-image: url('Jpeg/Sherif.jpg');
+    }
+	
+    .innerDiv2{
+        background-image: url('Jpeg/Red.jpg');
+    }
+	
+    .innerDiv3{
+        background-image: url('Jpeg/Don.jpg');
+    }
+	
+    .innerDiv4{
+        background-image: url('Jpeg/Mafia.jpg');
+    }
+	
+    .innerDiv5{
+        background-image: url('Jpeg/Maniac.jpg');
+    }
+	
+    .innerDiv6{
+        background-image: url('Jpeg/Medic.jpg');
+    }
+	
+    .innerDiv7{
+        background-image: url('Jpeg/News.jpg');
+    }
+	
+    .innerDiv8{
+        background-image: url('Jpeg/Godfater.jpg');
+    }
+		
+	#outerContainer{
+	    position: relative; 
+	    margin: auto;
+	    width: 1000px;
+	    height: 700px; 
+		background-image: url('Jpeg/Poker table.jpg');
+	}
+    .menu {
+	    margin: auto;
+        width: 300px;
+        height: 80px;
+        background-color: #1E1E1E;
+        display: inline-block;
+    }
+	
+    .Menu{
+        width: 60px;
+        height: 60px;
+	    margin: 15px;
+	    border-radius: 8px;
+	    background-image: url('Jpeg/Home.png')
+    }
+	
+    .reset{
+        width: 60px;
+        height: 60px;
+	    margin: 15px;
+	    border-radius: 8px;
+	    background-image: url('Jpeg/Reset_.png')
+    }
+	
+    .play{
+        width: 60px;
+        height: 60px;
+	    margin: 15px;
+	    border-radius: 8px;
+	    background-image: url('Jpeg/Play.png')
+    }
+</style>
+</head>
+<body>
+  <div class="menu">
+    <a href="Menu.html"><div class="Menu"></div></a>
+      <a href="Manual.html"><div class="reset"></div></a>
+        <a href="#"><div class="play"></div></a>
+  </div>
+<div id="outerContainer">
+
+    <div class="outerDiv1" id="outer1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv" id="drag1" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+	
+    <div class="outerDiv1" id="outer2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv2" id="drag2" draggable="true" ondragstart="drag(event)"></div>
+    </div>	
+	
+    <div class="outerDiv1" id="outer3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv3" id="drag3" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+	
+    <div class="outerDiv1" id="outer4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv4" id="drag4" draggable="true" ondragstart="drag(event)"></div>
+    </div>	
+	
+    <div class="outerDiv1" id="outer5" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv5" id="drag5" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+	
+    <div class="outerDiv1" id="outer6" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv6" id="drag6" draggable="true" ondragstart="drag(event)"></div>
+    </div>	
+	
+    <div class="outerDiv1" id="outer7" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv7" id="drag7" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+	
+    <div class="outerDiv1" id="outer8" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="innerDiv8" id="drag8" draggable="true" ondragstart="drag(event)"></div>
+    </div>	
+	
+    <!-- Копируем outerDiv 20 раз -->
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div class="outerDiv" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+</div>
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var draggedElement = document.getElementById(data);
+        var targetElement = ev.target;
+
+        // Проверяем, что переносимый элемент - внутри внешнего div
+        if (targetElement.classList.contains("outerDiv")) {
+            // Проверяем, если внешний div пуст
+            if (targetElement.children.length === 0) {
+                // Создаем клон перетаскиваемого элемента
+                var clonedElement = draggedElement.cloneNode(true);
+                // Добавляем клонированный элемент в целевой внешний div
+                targetElement.appendChild(clonedElement);
+                // Убираем атрибут id, чтобы предотвратить конфликты
+                clonedElement.removeAttribute("id");
+            } else {
+                // Если внешний div не пуст, добавляем новый клон рядом с существующим
+                var clonedElement = draggedElement.cloneNode(true);
+                targetElement.parentElement.appendChild(clonedElement);
+            }
+        }
+    }
+     // Функция для изменения фонового изображения при двойном щелчке
+    function changeImage(event) {
+        var target = event.target;
+        // Проверяем, является ли целевой элемент innerDiv
+        if (target.classList.contains("innerDiv") || target.classList.contains("innerDiv2") || target.classList.contains("innerDiv3") || target.classList.contains("innerDiv4") || target.classList.contains("innerDiv5") || target.classList.contains("innerDiv6") || target.classList.contains("innerDiv7") || target.classList.contains("innerDiv8")) {
+            // Проверяем, что родитель целевого элемента - outerDiv
+            if (target.parentElement.classList.contains("outerDiv")) {
+                // Здесь можно добавить код для выбора нового изображения, например, из массива или с помощью диалогового окна
+                var newImage = 'url("Jpeg/PlayesCard.jpg")';
+                // Изменяем фоновое изображение целевого элемента
+                target.style.backgroundImage = newImage;
+            }
+        }
+    }
+
+    // Добавляем обработчик для изменения фонового изображения при двойном щелчке
+    document.addEventListener('dblclick', changeImage);
+</script>
+
+
+</body>
+</html>
