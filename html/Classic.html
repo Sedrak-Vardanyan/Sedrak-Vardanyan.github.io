@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="Jpeg/GameTime.png">
-  <link rel="shortcut icon" href="Jpeg/GameTime.ico">
+  <link rel="icon" href="../Jpeg/GameTime.png">
+  <link rel="shortcut icon" href="../Jpeg/GameTime.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GameTime</title>
   <link rel="stylesheet" href="../css/classic.css">
@@ -12,11 +12,11 @@
 </head>
 
 <body>
-  <p style="background-image: url('Jpeg/GameTime.jpg');"></p>
+  <p style="background-image: url('../Jpeg/GameTime.jpg');"></p>
 
   <div class="menu">
     <audio controls class="audio">
-       <source src="Audio/Nino Rota - The Godfather theme.mp3" type="audio/mpeg">
+       <source src="../Audio/Nino Rota - The Godfather theme.mp3" type="audio/mpeg">
           </audio>
   
     <a href="Menu.html"><div class="Menu"></div></a>
@@ -28,11 +28,11 @@
     <div id="cards-container"></div>
   </div>
 
-  <audio id="clickSound" src="Audio/Clik-Gun.mp3"></audio>
+  <audio id="clickSound" src="../Audio/Clik-Gun.mp3"></audio>
 
   <script>
         // Создаем массив с буквами карт
-    const cardLetters = ['Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/RED', 'Jpeg/SHERIF', 'Jpeg/DON', 'Jpeg/MAFIA', 'Jpeg/MAFIA'];
+    const cardLetters = ['../Jpeg/RED', '../Jpeg/RED', '../Jpeg/RED', '../Jpeg/RED', '../Jpeg/RED', '../Jpeg/RED', '../Jpeg/SHERIF', '../Jpeg/DON', '../Jpeg/MAFIA', '../Jpeg/MAFIA'];
 	
     // Перемешиваем массив
     const shuffledCards = shuffleArray(cardLetters);
