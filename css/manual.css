@@ -1,0 +1,115 @@
+
+html {
+      background-color: #1E1E1E;
+    }	
+	
+    .outerDiv,
+	.outerDiv1{
+        position: relative;        
+	    width: 100px;
+        height: 150px;
+        border-radius: 8px;
+        display: inline-block;
+        margin: 8px;
+        line-height: 150px;
+	    background-color: rgba(0, 0, 0, 0);
+        border-style: solid;
+        border-width: 1px;
+		border-color: rgba(0, 0, 0, 0);
+		overflow: hidden;      /* նկարները դուրս չգան դիվի սահմաներից */
+	}	
+	.outerDiv1{
+	        cursor: pointer;
+	}		
+	
+	.outerDiv{
+	    border-width: 2px;
+		border-color: #0F371C;
+		/*opacity: 0.3;*/
+	}
+    .innerDiv,
+	.innerDiv2,
+	.innerDiv3,
+	.innerDiv4,
+	.innerDiv5,
+	.innerDiv6,
+	.innerDiv7,
+	.innerDiv8{
+        width: 100px;
+        height: 150px;
+        position: static;
+		background-size: cover;
+		border-radius: 8px;
+
+	}
+	
+    .innerDiv{
+        background-image: url('../Jpeg/Sherif.jpg');
+    }
+	
+    .innerDiv2{
+        background-image: url('../Jpeg/Red.jpg');
+    }
+	
+    .innerDiv3{
+        background-image: url('../Jpeg/Don.jpg');
+    }
+	
+    .innerDiv4{
+        background-image: url('../Jpeg/Mafia.jpg');
+    }
+	
+    .innerDiv5{
+        background-image: url('../Jpeg/Maniac.jpg');
+    }
+	
+    .innerDiv6{
+        background-image: url('../Jpeg/Medic.jpg');
+    }
+	
+    .innerDiv7{
+        background-image: url('../Jpeg/News.jpg');
+    }
+	
+    .innerDiv8{
+        background-image: url('../Jpeg/Godfater.jpg');
+    }
+		
+	#outerContainer{
+	    position: relative; 
+	    margin: auto;
+	    width: 1000px;
+	    height: 700px; 
+		background-image: url('../Jpeg/Poker table.jpg');
+	}
+    .menu {
+	    margin: auto;
+        width: 300px;
+        height: 80px;
+        background-color: #1E1E1E;
+        display: inline-block;
+    }
+	
+    .Menu{
+        width: 60px;
+        height: 60px;
+	    margin: 15px;
+	    border-radius: 8px;
+	    background-image: url('../Jpeg/Home.png')
+    }
+	
+    .reset{
+        width: 60px;
+        height: 60px;
+	    margin: 15px;
+	    border-radius: 8px;
+	    background-image: url('../Jpeg/Reset_.png')
+    }
+	
+    .play{
+        width: 60px;
+        height: 60px;
+	    margin: 15px;
+	    border-radius: 8px;
+	    background-image: url('../Jpeg/Play.png')
+    }

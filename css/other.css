@@ -1,0 +1,172 @@
+html {
+    background-color: #1E1E1E;
+  }
+
+.Fon { 
+   margin: auto;
+   width: 1000px;
+   height: 700px;       
+   background-color: #1E1E1E;
+   background-repeat: no-repeat;
+   position: relative;
+   left: -5px;
+   top: -305px;
+  }
+  
+.info1{
+    width: 944px;
+    height: 119px;
+    margin-left: 140px;
+    display: inline-block;
+    line-height: 150px;
+    background-image: url('../Jpeg/info1.png');
+    background-size: cover;
+  }
+  
+.Players10,
+.Players9,
+.Players8,
+.Players7,
+.Players6,
+.Players5{
+    width: 349px;
+    height: 221px;
+    margin: -10px;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+  }
+
+.Players7{
+    background-image: url('../Jpeg/Players7_hover.png');
+    background-size: cover;
+  }
+.Players7:hover{
+    background-image: url('../Jpeg/Players7.png');
+    background-size: cover;
+  }
+  
+.Players8{
+    background-image: url('../Jpeg/Players8_hover.png');
+    background-size: cover;
+  }
+.Players8:hover{
+    background-image: url('../Jpeg/Players8.png');
+    background-size: cover;
+  }
+  
+.Players9{
+    background-image: url('../Jpeg/Players9_hover.png');
+    background-size: cover;
+  }
+.Players9:hover{
+    background-image: url('../Jpeg/Players9.png');
+    background-size: cover;
+  }
+.Players10{
+    background-image: url('../Jpeg/Players7_hover.png');
+    background-size: cover;
+  }
+.Players10:hover{
+    background-image: url('../Jpeg/Players7.png');
+    background-size: cover;
+  }
+  
+.Players5{
+    background-image: url('../Jpeg/Players8_hover.png');
+    background-size: cover;
+  }
+.Players5:hover{
+    background-image: url('../Jpeg/Players8.png');
+    background-size: cover;
+  }
+  
+.Players6{
+    background-image: url('../Jpeg/Players9_hover.png');
+    background-size: cover;
+  }
+.Players6:hover{
+    background-image: url('../Jpeg/Players9.png');
+    background-size: cover;
+  }
+  
+.Hard_Players2,
+.Hard_Players3{
+    width: 289.56px;
+    height: 158.97px;
+    margin: 16.5px;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+  }
+.Hard_Players1{
+    width: 304.44px;
+    height: 158.97px;
+    margin: 17px;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+  }
+
+.Hard_Players1{
+    background-image: url('../Jpeg/Hard_m_hover.png');
+    background-size: cover;
+  }
+.Hard_Players1:hover{
+        background-image: url('../Jpeg/Hard_m.png');
+        background-size: cover;
+  }
+
+.Hard_Players2{
+    background-image: url('../Jpeg/News_hover.png');
+    background-size: cover;
+  }
+  
+.Hard_Players2:hover{
+    background-image: url('../Jpeg/News.png');
+    background-size: cover;
+  }
+
+.Hard_Players3{
+    background-image: url('../Jpeg/Medic_hover.png');
+    background-size: cover;
+
+  }
+.Hard_Players3:hover{
+    background-image: url('../Jpeg/Medic.png');
+    background-size: cover;
+  }		
+
+.nav {
+    margin: auto;
+    width: 300px;
+    height: 80px;
+    display: inline-block;
+  }	
+  
+.menu {
+    margin: auto;
+    width: 80px;
+    height: 300px;
+    display: inline-block;
+  }
+      
+.Menu{
+    width: 60px;
+    height: 60px;
+    margin: 15px;
+    border-radius: 8px;
+    background-image: url('../Jpeg/Home.png')
+    }
