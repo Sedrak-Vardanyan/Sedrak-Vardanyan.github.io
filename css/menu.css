@@ -1,0 +1,291 @@
+ 
+html {
+    background-color: #1E1E1E;
+  }
+
+.Fon { 
+   position: relative; /* -------- Stugel ------- */
+   margin: auto;
+   width: 1000px;
+   height: 700px;       
+  }
+
+.Classic,
+.Manual,
+.Hard {
+    position: relative; /* -------- Stugel ------- */
+    width: 350px;
+    height: 562px;
+    margin: -10px;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+  }
+  
+.Classic {
+    background-image: url('Jpeg/Classic.png');
+    background-size: cover;
+  }
+.Classic:hover {
+    background-image: url('Jpeg/Classic_hover.png');
+    background-size: cover;
+  }     
+  
+/* Manula Flip START */
+.Flip1{                /*DOWN*/
+    width: 79px;
+    height: 117px;
+    background-image: url('Jpeg/Card1.png');
+    background-size: cover;
+    position: relative;
+    left: 130px;
+    top: 50px;
+    animation: Fliped1 1.5s forwards;
+    animation-delay: 0.5s;
+    }
+
+@keyframes Fliped1{                
+   100%{
+   transform: rotate(-20deg);
+   transform-origin: 50% 40%;
+   margin-left: -30px;
+   }
+     } 
+     
+.Flip2{              /*UP*/
+    width: 80px;
+    height: 120px;
+    background-image: url('Jpeg/Card2.png');
+    background-size: cover;
+    position: relative;
+    left: 129px;
+    top: -67px;
+    animation: Fliped2 1.5s forwards;
+    animation-delay: 0.5s;
+    }
+
+@keyframes Fliped2{              
+   100%{
+   transform: rotate(10deg);
+   transform-origin: 20% 40%;
+   margin-left: 40px;
+   }
+     } 	  
+/* Manula Flip END */	
+
+.Manual {
+    background-image: url('../Jpeg/Manual.png');
+    background-size: cover;
+  }
+.Manual:hover {
+    background-image: url('Jpeg/Manual_hover.png');
+    background-size: cover; 
+  }	
+
+.Hard {
+    background-image: url('Jpeg/Hard.png');
+    background-size: cover;
+  }
+.Hard:hover {
+    background-image: url('Jpeg/Hard_hover.png');
+    background-size: cover;
+  }
+  
+.info1{
+    width: 944px;
+    height: 119px;
+    margin-left: 25px;
+    display: inline-block;
+    line-height: 150px;
+    background-image: url('Jpeg/info1.png');
+    background-size: cover;
+  }
+
+.Classic_L{
+   width: 288px;
+   height: 503px;
+   border-radius: 8px;	 
+   aspect-ratio: 1;
+   background:
+   linear-gradient(to bottom right,#0000 calc(40% - 40px),#fff 50%,#0000 calc(30% + 40px)) 
+   bottom right/calc(200% + 80px) calc(260% + 80px) 
+   rgba(255, 166, 0, 0);
+   animation: Anun1 2s backwards;
+   animation-delay: 2s; 
+   translate: (-50% -50%);
+   position: relative;
+   left: 31px;
+   top: 32px;
+     }   
+     
+@keyframes Anun1 {
+   100% {background-position: top left}
+     }
+           
+.Manual_L {
+   width: 289px;
+   height: 503px;
+   border-radius: 8px;	 
+   aspect-ratio: 1;
+   background:
+   linear-gradient(to bottom right,#0000 calc(40% - 40px),#fff 50%,#0000 calc(30% + 40px)) 
+   bottom right/calc(200% + 80px) calc(260% + 80px) 
+   rgba(255, 166, 0, 0);
+   animation: Card_Fliped 2s backwards;
+   animation-delay: 2.4s; 
+   translate: (-50% -50%);
+   position: relative;
+   left: 31px;
+   top: -205px;
+     }   
+     
+@keyframes Card_Fliped {
+   100% {background-position: top left}
+     }
+
+.Hard_L {
+   width: 288px;
+   height: 501px;
+   border-radius: 8px;	 
+   aspect-ratio: 1;
+   background:
+   linear-gradient(to bottom right,#0000 calc(40% - 40px),#fff 50%,#0000 calc(30% + 40px)) 
+   bottom right/calc(200% + 80px) calc(260% + 80px) 
+   rgba(255, 166, 0, 0);
+   animation: Anun1 2s backwards;
+   animation-delay: 2.8s; 
+   translate: (-50% -50%);
+   position: relative;
+   left: 31px;
+   top: 32px;
+     }   	   
+@keyframes Anun1 {
+   100% {background-position: top left}
+     }
+     
+.Fon2 { 
+   margin: auto;
+   width: 1000px;
+   height: 3500px;
+  color: White;	 
+  }	   
+.Players { 
+   width: 1000px;
+   height: 80px;  
+   color: white;
+   font-size: 50px;	
+   text-align: center;
+  }	  
+          
+.Red,
+.Sherif,
+.Mafia,
+.Don,
+.God,
+.Medic,
+.Journal,
+.Maniac{
+    width: 100px;
+    height: 150px;
+    margin: 10.7px;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: white;
+  }
+
+.Red{
+    background-image: url('Jpeg/Red.jpg');
+    background-size: cover;
+  }
+.Sherif{
+    background-image: url('Jpeg/Sherif.jpg');
+    background-size: cover;
+  }
+.Mafia{
+    background-image: url('Jpeg/Mafia.jpg');
+    background-size: cover;
+  }
+.Don{
+    background-image: url('Jpeg/Don.jpg');
+    background-size: cover;
+  }
+.God{
+    background-image: url('Jpeg/Godfater.jpg');
+    background-size: cover;
+  }
+.Medic{
+    background-image: url('Jpeg/Medic.jpg');
+    background-size: cover;
+  }
+.Journal{
+    background-image: url('Jpeg/News.jpg');
+    background-size: cover;
+  }
+.Maniac{
+    background-image: url('Jpeg/Maniac.jpg');
+    background-size: cover;
+  }
+.mydiv{
+     width: 1000px;
+     height: 150px;
+     background: url('Jpeg/mafia-1.jpg');
+     background-size: cover; 
+     background-attachment: fixed;	   
+}
+.info{
+    width: 944px;
+    height: 167px;
+    margin: auto;
+    border-radius: 8px;
+    display: inline-block;
+    line-height: 150px;
+    background-image: url('Jpeg/info.png');
+    background-size: cover;
+  }
+  
+.Youtube,
+.Facebook,
+.Hayibruncq{
+    width: 32px;
+    height: 32px;
+    margin: 5px;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: black;
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+  }
+
+.Youtube{
+    background-image: url('Jpeg/Youtube_hover.png');
+    background-size: cover;
+  }
+.Youtube:hover{
+    background-image: url('Jpeg/Youtube.png');
+    background-size: cover;
+  }
+
+.Facebook{
+    background-image: url('Jpeg/Facebook_hover.png');
+    background-size: cover;
+  }
+.Facebook:hover{
+    background-image: url('Jpeg/Facebook.png');
+    background-size: cover;
+  }
+
+.Hayibruncq{
+    background-image: url('Jpeg/Hayibruncq_hover.png');
+    background-size: cover;
+  }
+.Hayibruncq:hover{
+    background-image: url('Jpeg/Hayibruncq.png');
+    background-size: cover;
+  }
