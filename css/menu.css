@@ -16,7 +16,7 @@ body {
     position: relative; /* -------- Stugel ------- */
     width: 283px;
     height: 493px;
-    margin: 10px 22px 0px 22px;
+    margin: 20px 22px 0px 22px;
     border-radius: 8px;
     display: inline-block;
     cursor: pointer;
@@ -38,10 +38,10 @@ body {
                                 /* Card Flip START */
  .Flipdiv
  {
-  width: 170px;
-  height: 150px;
+  width: 0.1px;
+  height: 0.1px;
   position: relative;
-  background-color: blue;
+  background-color: rgba(0, 0, 255, 0);
   left: -35px;
   top: -525px;
   z-index: 1;
@@ -52,7 +52,7 @@ body {
     height: 117px;
     background-image: url('../Jpeg/Card1.png');
     background-size: cover;
-    position: sticky;
+    position: relative;
     left: 130px;
     top: 50px;
     animation: Fliped1 1.5s forwards;
@@ -73,7 +73,7 @@ body {
     height: 120px;
     background-image: url('../Jpeg/Card2.png');
     background-size: cover;
-    position: sticky;
+    position: relative;
     left: 129px;
     top: -67px;
     animation: Fliped2 1.5s forwards;
@@ -133,6 +133,8 @@ body {
     line-height: 150px;
     background-image: url('../Jpeg/info1.png');
     background-size: cover;
+   /* position: fixed;
+    z-index: 3; */
   }
 
 .Classic_L{
