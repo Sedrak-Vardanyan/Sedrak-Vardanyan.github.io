@@ -14,8 +14,8 @@ html {
 .Manual,
 .Hard {
     position: relative; /* -------- Stugel ------- */
-    width: 350px;
-    height: 562px;
+    width: 283px;
+    height: 493px;
     margin: -10px;
     border-radius: 8px;
     display: inline-block;
@@ -24,6 +24,7 @@ html {
     font-size: 20px;
     text-align: center;
     line-height: 150px;
+    background-color: black;
   }
   
 .Classic {
@@ -31,8 +32,7 @@ html {
     background-size: cover;
   }
 .Classic:hover {
-    background-image: url('../Jpeg/Classic_hover.png');
-    background-size: cover;
+  box-shadow: 0px 0px 39px 14px rgb(255,0,0);
   }     
   
 /* Manula Flip START */
@@ -82,8 +82,7 @@ html {
     background-size: cover;
   }
 .Manual:hover {
-    background-image: url('../Jpeg/Manual_hover.png');
-    background-size: cover; 
+  box-shadow: 0px 0px 39px 14px rgb(255,0,0);
   }	
 
 .Hard {
@@ -91,8 +90,7 @@ html {
     background-size: cover;
   }
 .Hard:hover {
-    background-image: url('../Jpeg/Hard_hover.png');
-    background-size: cover;
+  box-shadow: 0px 0px 39px 14px rgb(255,0,0);
   }
   
 .info1{
