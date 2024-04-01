@@ -17,7 +17,7 @@ body {
     width: 283px;
     height: 493px;
     margin: 20px 22px 0px 22px;
-    border-radius: 8px;
+    border-radius: 20px;
     display: inline-block;
     cursor: pointer;
     font-size: 20px;
@@ -140,7 +140,7 @@ body {
 .Classic_L{
    width: 283px;
    height: 493px;
-   border-radius: 8px;	 
+   border-radius: 20px;	 
    aspect-ratio: 1;
    background:
    linear-gradient(to bottom right,#0000 calc(40% - 40px),#fff 50%,#0000 calc(30% + 40px)) 
@@ -161,7 +161,7 @@ body {
 .Manual_L {
    width: 283px;
    height: 493px;
-   border-radius: 8px;	 
+   border-radius: 20px;	 
    aspect-ratio: 1;
    background:
    linear-gradient(to bottom right,#0000 calc(40% - 40px),#fff 50%,#0000 calc(30% + 40px)) 
@@ -183,7 +183,7 @@ body {
 .Hard_L {
    width: 283px;
    height: 493px;
-   border-radius: 8px;	 
+   border-radius: 20px;	 
    aspect-ratio: 1;
    background:
    linear-gradient(to bottom right,#0000 calc(40% - 40px),#fff 50%,#0000 calc(30% + 40px)) 
