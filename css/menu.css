@@ -1,5 +1,5 @@
  
-html {
+body {
     background-color: #1E1E1E;
   }
 
@@ -16,15 +16,15 @@ html {
     position: relative; /* -------- Stugel ------- */
     width: 283px;
     height: 493px;
-    margin: -10px;
+    margin: 10px 22px 0px 22px;
     border-radius: 8px;
     display: inline-block;
     cursor: pointer;
-    color: white;
     font-size: 20px;
     text-align: center;
     line-height: 150px;
     background-color: black;
+   /* padding-top: 100%;  https://www.w3schools.com/howto/howto_css_aspect_ratio.asp */
   }
   
 .Classic {
@@ -32,10 +32,10 @@ html {
     background-size: cover;
   }
 .Classic:hover {
-  box-shadow: 0px 0px 39px 14px rgb(255,0,0);
+  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
   }     
   
-/* Manula Flip START */
+                                /* Manula Flip START */
 .Flip1{                /*DOWN*/
     width: 79px;
     height: 117px;
@@ -46,6 +46,7 @@ html {
     top: 50px;
     animation: Fliped1 1.5s forwards;
     animation-delay: 0.5s;
+    z-index: 2;
     }
 
 @keyframes Fliped1{                
@@ -66,6 +67,7 @@ html {
     top: -67px;
     animation: Fliped2 1.5s forwards;
     animation-delay: 0.5s;
+    z-index: 2;
     }
 
 @keyframes Fliped2{              
@@ -75,24 +77,43 @@ html {
    margin-left: 40px;
    }
      } 	  
-/* Manula Flip END */	
+                                   /* Manula Flip END */	
 
 .Manual {
     background-image: url('../Jpeg/Manual.png');
     background-size: cover;
   }
 .Manual:hover {
-  box-shadow: 0px 0px 39px 14px rgb(255,0,0);
+  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
   }	
 
 .Hard {
     background-image: url('../Jpeg/Hard.png');
     background-size: cover;
   }
-.Hard:hover {
-  box-shadow: 0px 0px 39px 14px rgb(255,0,0);
+
+.Hard:hover
+  {
+  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
   }
-  
+
+.logoshadov      
+  {
+    width: 99px;
+    height: 99px;
+    z-index: 2;
+    background-color: rgba(255, 0, 0, 0);
+    transform: rotate(45deg);	
+    position: relative;
+    left: 92px;
+    top: 266px;
+  }  
+
+.logoshadov:hover 
+  {
+  box-shadow: 0px 0px 30px 5px rgb(0,0,255);
+  }
+
 .info1{
     width: 944px;
     height: 119px;
@@ -104,8 +125,8 @@ html {
   }
 
 .Classic_L{
-   width: 288px;
-   height: 503px;
+   width: 283px;
+   height: 493px;
    border-radius: 8px;	 
    aspect-ratio: 1;
    background:
@@ -116,8 +137,8 @@ html {
    animation-delay: 2s; 
    translate: (-50% -50%);
    position: relative;
-   left: 31px;
-   top: 32px;
+   left: 0px;
+   top: 0px;
      }   
      
 @keyframes Anun1 {
@@ -125,8 +146,8 @@ html {
      }
            
 .Manual_L {
-   width: 289px;
-   height: 503px;
+   width: 283px;
+   height: 493px;
    border-radius: 8px;	 
    aspect-ratio: 1;
    background:
@@ -137,8 +158,8 @@ html {
    animation-delay: 2.4s; 
    translate: (-50% -50%);
    position: relative;
-   left: 31px;
-   top: -205px;
+   left: 0px;
+   top: -237px;
      }   
      
 @keyframes Card_Fliped {
@@ -146,8 +167,8 @@ html {
      }
 
 .Hard_L {
-   width: 288px;
-   height: 501px;
+   width: 283px;
+   height: 493px;
    border-radius: 8px;	 
    aspect-ratio: 1;
    background:
@@ -158,8 +179,8 @@ html {
    animation-delay: 2.8s; 
    translate: (-50% -50%);
    position: relative;
-   left: 31px;
-   top: 32px;
+   left: 0px;
+   top: -99px;
      }   	   
 @keyframes Anun1 {
    100% {background-position: top left}
