@@ -46,7 +46,7 @@ html {
      rgba(255, 166, 0, 0);
      animation: l8 7s infinite; /* backwards */
      transform: rotate(45deg);	 
-     translate(-50% -50%);
+     translate: (-50% -50%);
 	 position: relative;
 	 left: 418px;
      top: 218px;
@@ -55,14 +55,6 @@ html {
      100% {background-position: top left}
        }
 	   
-.audio{
-   opacity: 0.2;  /* Թաանցիկ */
-     width: 20px;
-     height: 20px;
-   	 position: relative;
-	 left: 0px;
-     top: 0px;
-    }
   </style>
 </head>
 
@@ -72,9 +64,6 @@ html {
     <div class="loader1">
   </div>
   
-        <audio controls autoplay class="audio">
-        <source src="Audio/Nino Rota - The Godfather theme.mp3" type="audio/mpeg">
-           </audio>
   
   <script>
         setTimeout(function(){
