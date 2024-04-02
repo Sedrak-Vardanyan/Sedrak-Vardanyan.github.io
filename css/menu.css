@@ -232,35 +232,35 @@ body {
   }
 
 .Red{
-    background-image: url('../Jpeg/Red.jpg');
+    background-image: url('../svg/Red.svg');
     background-size: cover;
   }
 .Sherif{
-    background-image: url('../Jpeg/Sherif.jpg');
+    background-image: url('../svg/Sherif.svg');
     background-size: cover;
   }
 .Mafia{
-    background-image: url('../Jpeg/Mafia.jpg');
+    background-image: url('../svg/Mafia.svg');
     background-size: cover;
   }
 .Don{
-    background-image: url('../Jpeg/Don.jpg');
+    background-image: url('../svg/Don.svg');
     background-size: cover;
   }
 .God{
-    background-image: url('../Jpeg/Godfater.jpg');
+    background-image: url('../svg/Godfater.svg');
     background-size: cover;
   }
 .Medic{
-    background-image: url('../Jpeg/Medic.jpg');
+    background-image: url('../svg/Medic.svg');
     background-size: cover;
   }
 .Journal{
-    background-image: url('../Jpeg/News.jpg');
+    background-image: url('../svg/News.svg');
     background-size: cover;
   }
 .Maniac{
-    background-image: url('../Jpeg/Maniac.jpg');
+    background-image: url('../svg/Maniac.svg');
     background-size: cover;
   }
 .mydiv{

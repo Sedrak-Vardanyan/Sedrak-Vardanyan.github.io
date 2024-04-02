@@ -1,5 +1,5 @@
  // Создаем массив с буквами карт
- const cardLetters = ['../Jpeg/Red', '../Jpeg/Red', '../Jpeg/Red', '../Jpeg/Red', '../Jpeg/Red', '../Jpeg/Red', '../Jpeg/Sherif', '../Jpeg/Don', '../Jpeg/Mafia', '../Jpeg/Mafia'];
+ const cardLetters = ['../svg/Red', '../svg/Red', '../svg/Red', '../svg/Red', '../svg/Red', '../svg/Red', '../svg/Sherif', '../svg/Don', '../svg/Mafia', '../svg/Mafia'];
 
  // Перемешиваем массив
  const shuffledCards = shuffleArray(cardLetters);
@@ -24,7 +24,7 @@
  
  // Функция для открытия карты и удаления из списка
  function revealAndRemoveCard(cardElement, letter) {
-   cardElement.style.backgroundImage = `url('${letter}.jpg')`;
+   cardElement.style.backgroundImage = `url('${letter}.svg')`;
    setTimeout(() => {
      cardsContainer.removeChild(cardElement);
      // После удаления всех карт, переход на следующую страницу через 5 секунд
