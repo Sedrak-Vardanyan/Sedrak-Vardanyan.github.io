@@ -49,23 +49,25 @@ html {
     }
 	
 .Menu{
-      width: 60px;
-      height: 60px;
-	  margin: 15px;
-	  border-radius: 8px;
-	  background-image: url('../Jpeg/Home.png')
+      width: 40px;
+      height: 40px;
+	margin: 20px;
+	background-image: url('../svg/Home.svg');
+      background-size: cover;
       }
+
 .reset{
-      width: 60px;
-      height: 60px;
-	  margin: 15px;
-	  border-radius: 8px;
-	  background-image: url('../Jpeg/Reset_.png')
+      width: 40px;
+      height: 40px;
+	margin: 20px;
+	background-image: url('../svg/Reset.svg');
+      background-size: cover;
 }
 .play{
-      width: 60px;
-      height: 60px;
-	  margin: 15px;
-	  border-radius: 8px;
-	  background-image: url('../Jpeg/Play.png')
+      width: 40px;
+      height: 40px;
+	margin: 20px;
+      cursor: pointer;
+	background-image: url('../svg/Play.svg');
+      background-size: cover;
 }

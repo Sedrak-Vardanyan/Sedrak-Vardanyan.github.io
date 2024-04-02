@@ -50,7 +50,7 @@ body {
 .Flip1{                /*DOWN*/
     width: 79px;
     height: 117px;
-    background-image: url('../Jpeg/Card1.png');
+    background-image: url('../svg/Card1.svg');
     background-size: cover;
     position: relative;
     left: 130px;
@@ -71,7 +71,7 @@ body {
 .Flip2{              /*UP*/
     width: 80px;
     height: 120px;
-    background-image: url('../Jpeg/Card2.png');
+    background-image: url('../svg/Card2.svg');
     background-size: cover;
     position: relative;
     left: 129px;
@@ -229,40 +229,34 @@ body {
     display: inline-block;
     cursor: pointer;
     background-color: white;
+    background-size: cover;
   }
 
 .Red{
     background-image: url('../svg/Red.svg');
-    background-size: cover;
   }
 .Sherif{
     background-image: url('../svg/Sherif.svg');
-    background-size: cover;
   }
 .Mafia{
     background-image: url('../svg/Mafia.svg');
-    background-size: cover;
   }
 .Don{
     background-image: url('../svg/Don.svg');
-    background-size: cover;
   }
 .God{
     background-image: url('../svg/Godfater.svg');
-    background-size: cover;
   }
 .Medic{
     background-image: url('../svg/Medic.svg');
-    background-size: cover;
   }
 .Journal{
     background-image: url('../svg/News.svg');
-    background-size: cover;
   }
 .Maniac{
     background-image: url('../svg/Maniac.svg');
-    background-size: cover;
   }
+
 .mydiv{
      width: 1000px;
      height: 150px;
