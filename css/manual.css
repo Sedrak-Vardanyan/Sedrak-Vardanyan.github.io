@@ -44,35 +44,35 @@ html {
 	}
 	
     .innerDiv{
-        background-image: url('../Jpeg/Sherif.jpg');
+        background-image: url('../svg/Sherif.svg');
     }
 	
     .innerDiv2{
-        background-image: url('../Jpeg/Red.jpg');
+        background-image: url('../svg/Red.svg');
     }
 	
     .innerDiv3{
-        background-image: url('../Jpeg/Don.jpg');
+        background-image: url('../svg/Don.svg');
     }
 	
     .innerDiv4{
-        background-image: url('../Jpeg/Mafia.jpg');
+        background-image: url('../svg/Mafia.svg');
     }
 	
     .innerDiv5{
-        background-image: url('../Jpeg/Maniac.jpg');
+        background-image: url('../svg/Maniac.svg');
     }
 	
     .innerDiv6{
-        background-image: url('../Jpeg/Medic.jpg');
+        background-image: url('../svg/Medic.svg');
     }
 	
     .innerDiv7{
-        background-image: url('../Jpeg/News.jpg');
+        background-image: url('../svg/News.svg');
     }
 	
     .innerDiv8{
-        background-image: url('../Jpeg/Godfater.jpg');
+        background-image: url('../svg/Godfater.svg');
     }
 		
 	#outerContainer{
