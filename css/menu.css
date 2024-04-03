@@ -7,19 +7,25 @@ body {
    position: relative; /* -------- Ստուգել ------- */
    margin: auto;
    width: 1000px;
-   height: 600px;       
+   height: 700px;       
   }
 
   .info1{
-    width: 100%;
+    width: 1000px;
     height: 70px;
-    margin: 20px 0 40px 0;
+    margin: 10px 0 400 1200px;
     display: inline-block;
     line-height: 150px;
     background-color: rgba(0, 0, 0, 1);
     background-size: cover;
-   /* position: fixed;
-    z-index: 3; */
+    position: fixed;
+    z-index: 1; 
+    background: rgba( 0, 0, 0, 0 ); /* գույն ալֆա կանալով աշխատել*/
+    box-shadow: 0 8px 32px 0 rgba(10, 10, 10, 0.37);
+    backdrop-filter: blur( 3px );          /*բլուրի չափը 0,1-ից 20 */
+    -webkit-backdrop-filter: blur( 3px );  /*փոխել վերևինի հետ միասին */
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
   }
 
 .Classic,
@@ -28,7 +34,7 @@ body {
     position: relative; /* -------- Ստուգել ------- */
     width: 283px;
     height: 493px;
-    margin: 20px 22px 0px 22px;
+    margin: 130px 22px 90px 22px;
     border-radius: 20px;
     display: inline-block;
     cursor: pointer;
@@ -36,18 +42,34 @@ body {
     text-align: center;
     line-height: 150px;
     background-color: black;
+    background-size: cover;
    /* padding-top: 100%;  https://www.w3schools.com/howto/howto_css_aspect_ratio.asp */
   }
   
 .Classic {
     background-image: url('../svg/Classic.svg');
-    background-size: cover;
   }
 .Classic:hover {
   box-shadow: 0px 0px 39px 7px rgb(255,0,0);
   }     
-  
-                                    /* Card Flip START */
+  	
+.Manual {
+    background-image: url('../svg/Manual.svg');
+  }
+.Manual:hover {
+  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
+  }	
+
+  .Hard {
+    background-image: url('../Jpeg/Hard.png');
+  }
+
+.Hard:hover
+  {
+  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
+  }
+
+   /* Card Flip START */
  .Flipdiv
  {
   width: 0.1px;
@@ -100,25 +122,9 @@ body {
    margin-left: 40px;
    }
      } 	  
-                                   /* Card Flip END */	
+ /* Card Flip END */
 
-.Manual {
-    background-image: url('../svg/Manual.svg');
-    background-size: cover;
-  }
-.Manual:hover {
-  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
-  }	
 
-.Hard {
-    background-image: url('../Jpeg/Hard.png');
-    background-size: cover;
-  }
-
-.Hard:hover
-  {
-  box-shadow: 0px 0px 39px 7px rgb(255,0,0);
-  }
 
 /*.logoshadov      
   {
@@ -226,7 +232,6 @@ body {
     border-radius: 8px;
     display: inline-block;
     cursor: pointer;
-    background-color: white;
     background-size: cover;
   }
 
@@ -284,39 +289,30 @@ body {
     display: inline-block;
     cursor: pointer;
     line-height: 150px;
+    background-size: cover;
   }
 
 .Youtube{
     background-image: url('../Jpeg/Youtube_hover.png');
-    background-size: cover;
   }
 .Youtube:hover{
     background-image: url('../Jpeg/Youtube.png');
-    background-size: cover;
   }
-
 .Facebook{
     background-image: url('../Jpeg/Facebook_hover.png');
-    background-size: cover;
   }
 .Facebook:hover{
     background-image: url('../Jpeg/Facebook.png');
-    background-size: cover;
   }
-
 .Hayibruncq{
     background-image: url('../Jpeg/Hayibruncq_hover.png');
-    background-size: cover;
   }
 .Hayibruncq:hover{
     background-image: url('../Jpeg/Hayibruncq.png');
-    background-size: cover;
   }
   .GameTime{
     background-image: url('../Jpeg/GameTime_.png');
-    background-size: cover;
   }
 .GameTime:hover{
     background-image: url('../Jpeg/GameTime_hover.png');
-    background-size: cover;
   }

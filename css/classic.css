@@ -71,3 +71,13 @@ html {
 	background-image: url('../svg/Play.svg');
       background-size: cover;
 }
+ #cards-container{
+      width: 800px;
+      height: 400px;
+      background: rgba( 0, 0, 0, 0 ); /* գույն ալֆա կանալով աշխատել*/
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      backdrop-filter: blur( 3px );          /*բլուրի չափը 0,1-ից 20 */
+      -webkit-backdrop-filter: blur( 3px );  /*փոխել վերևինի հետ միասին */
+      border-radius: 10px;
+      border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
