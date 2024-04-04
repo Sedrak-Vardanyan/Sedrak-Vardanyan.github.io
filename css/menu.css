@@ -13,7 +13,7 @@ body {
   .info1{
     width: 1000px;
     height: 70px;
-    margin: 10px 0 100px 1200px;
+  /*  margin: 10px 0 100px 1200px; */
     display: inline-block;
     line-height: 150px;
     background-color: rgba(0, 0, 0, 1);
