@@ -1,5 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 
-html {
+body {
       background-color: #1E1E1E;
     }	
 	
@@ -10,7 +14,7 @@ html {
         height: 150px;
         border-radius: 8px;
         display: inline-block;
-        margin: 8px;
+        margin: 8px 0 8px 19px;
         line-height: 150px;
 	    background-color: rgba(0, 0, 0, 0);
         border-style: solid;
@@ -113,3 +117,71 @@ html {
 	    border-radius: 8px;
 	    background-image: url('../Jpeg/Play.png')
     }
+
+     .music,
+     .nighit_dey,
+     .mafia,
+     .sherif,
+     .don,
+     .journalist,
+     .medic,
+     .godfater,
+     .maniac,
+     .t10s,
+     .end_time,
+     .eyes,
+     .candidate,
+     .accepted,
+     .t30s,
+     .win_red,
+     .win_black
+     {
+        width: 100px;
+        height: 40px;
+	    margin: 15px;
+	    border-radius: 8px;
+        background-color: red;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+     }
+
+     .control_button
+     {
+	    position: relative; 
+	    margin: auto;
+	    width: 1000px;
+	    height: 700px; 
+     }
+
+     .X,
+     .Y,
+     .Z
+     {
+        width: 48px;
+        height: 48px;
+	    border-radius: 2px;
+        background-color: rgba(255, 255, 255, 0);
+        position: relative; 
+        border-style: solid;
+        border-width: 1px;
+		border-color: #0F371C; 
+        background-image: url('../svg/kil.svg');
+        background-size: cover;
+}
+     
+
+     .xyz{
+        position: relative;        
+	    width: 50px;
+        height: 150px;
+        border-radius: 2px;
+        display: inline-block;
+        margin: 8px 0 8px -4px;
+        line-height: 150px;
+	    background-color: rgba(0, 0, 0, 0);
+      /*  border-style: solid;
+        border-width: 1px;
+		border-color: rgba(0, 0, 0, 1); */
+		overflow: hidden; 
+     }

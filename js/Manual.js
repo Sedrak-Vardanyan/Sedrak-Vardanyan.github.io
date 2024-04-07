@@ -47,3 +47,21 @@
     // Добавляем обработчик для изменения фонового изображения при двойном щелчке
     document.addEventListener('dblclick', changeImage);
 
+ // Создаем HTML элементы для каждой карты и добавляем их на страницу
+ const cardsContainer = document.getElementById('cards-container');
+ shuffledCards.forEach(letter => {
+   const cardElement = document.createElement('div');
+   cardElement.classList.add('card', letter);
+   cardElement.addEventListener('click', () => {
+ flipCard(cardElement);   // Добавляем прослушиватель событий к каждой карточке для вызова функции FlipCard
+   revealAndRemoveCard(cardElement, letter);
+   playClickSound(); // Воспроизвести звук щелчка при щелчке карты
+   });
+   cardsContainer.appendChild(cardElement);
+   });
+
+ // Функция для воспроизведения звука при клике
+ function playClickSound() {
+    const clickSound = document.getElementById('clickSound');
+    clickSound.play();
+  }
