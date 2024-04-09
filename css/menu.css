@@ -11,9 +11,9 @@ body {
   }
 
   .info1{
-    width: 1200px;
+    width: 800px;
     height: 70px;
-  /*  margin: 10px 0 100px 1200px; */
+    margin: auto; 
     display: inline-block;
     line-height: 150px;
     background-color: rgba(0, 0, 0, 1);
