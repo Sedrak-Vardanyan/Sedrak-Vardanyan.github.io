@@ -318,3 +318,6 @@ body {
 .GameTime:hover{
     background-image: url('../Jpeg/GameTime_hover.png');
   }
+  .loto{
+    background-image: url('../Jpeg/GameTime_.png');
+  }
