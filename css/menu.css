@@ -322,3 +322,6 @@ body {
   .loto{
     background-image: url('../Jpeg/loto.png');
   }
+  .loto:hover{
+    background-image: url('../Jpeg/loto.png');
+  }
