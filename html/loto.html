@@ -232,37 +232,38 @@
             }
         }
 
-        function playWinSound() {
-            let audio = new Audio('../Audio/sounds/win.mp3');
-            audio.play();
-        }
+let audioPlayer = new Audio();
 
-        function playWaitSound() {
-            let audio = new Audio('../Audio/sounds/wait2.mp3');
-            audio.play();
-        }
+function playSound(src) {
+    if (!audioPlayer.paused) {
+        audioPlayer.pause(); // Դադարեցնել ընթացիկ ձայնը
+        audioPlayer.currentTime = 0; // Վերադարձնել սկիզբ
+    }
+    audioPlayer.src = src;
+    audioPlayer.play().catch(error => {
+        console.log("Ձայնը չի նվագարկվել:", error);
+    });
+}
 
-        function playStartSound() {
-            let audio = new Audio('../Audio/sounds/start.mp3');
-            audio.play();
-        }
+function playNumberSound(num) {
+    let soundSource = getSelectedSoundSource();
+    if (soundSource !== "Sound Off") {
+        playSound(`../Audio/sounds/${soundSource}/${num}.mp3`);
+    }
+}
 
+function playWinSound() {
+    playSound('../Audio/sounds/win.mp3');
+}
+
+function playWaitSound() {
+    playSound('../Audio/sounds/wait2.mp3');
+}        
         function getSelectedSoundSource() {
             let selectedSoundSource = document.querySelector('input[name="sounds"]:checked').value;
             return selectedSoundSource;
         }
 
-        let audioPlayer = new Audio();
-        function playNumberSound(num) {
-            let soundSource = getSelectedSoundSource();
-            if (soundSource !== "Sound Off") {
-                audioPlayer.src = `../Audio/sounds/${soundSource}/${num}.mp3`;
-                audioPlayer.play().catch(error => {
-                    console.log("Ձայնը չի նվագարկվել:", error);
-                });
-            }
-        }
- 
         function showNumber() {
             if (!running || numbers.length === 0) {
                 running = false;
