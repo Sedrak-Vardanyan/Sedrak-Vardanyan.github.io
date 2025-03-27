@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../Jpeg/GameTime.png">
+    <link rel="shortcut icon" href="../Jpeg/GameTime.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTime Loto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar select {
+            font-size: 18px;
+            padding: 5px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            margin-left: auto;
+        }
+        #number-container {
+            font-size: 100px;
+            font-weight: bold;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-in-out;
+            margin-top: 20px;
+        }
+        #number-container1 {
+            height: 100px;
+            margin-top: 5px;
+        }
+        #cardInput {
+            width: 470px;
+            height: 10px;
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            width: 500px;
+            margin: 20px auto;
+        }
+        .grid-item {
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 5px;
+        }
+        .red-dark { background-color: #ffd1d1; color: white; }
+        .red-light { background-color: #f67f7f; color: white; }
+        .red-medium { background-color: red; color: white;
+                      box-shadow: 0px 0px 20px 5px rgb(255,0,0);
+        }
+        .grid-item.red-medium {
+            border: 1px solid red;
+        }
+        .card {
+            display: inline-block;
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px;
+        }
+        .card.yellow { background-color: #fbff00; }
+        .card.green { background-color: #4dff00; }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <select id="winStatsDropdown"></select>
+    </div>
+    <div id="number-container1"><div id="number-container"></div></div>
+    <div id="grid"></div>
+    <button id="toggleButton" onclick="toggleShow()">Սկսել</button>
+    <button onclick="refreshContent()">Թարմացնել</button>
+    <label for="speed">Արագություն:</label>
+    <input type="range" id="speed" max="2000" min="0" step="100" value="500" oninput="updateSpeed(this.value)">
+    <span id="speedValue">500ms</span>
+    <br>
+    <input type="text" id="cardInput" placeholder="Մուտքագրեք քարտերի համարները (օր․ 1,2,3,)">
+    <button onclick="selectCards()">Ընտրել</button>
+    <div id="cards"></div>
+    <label for="sounds">Ընտրեք ձայնը:</label>
+    <input type="radio" id="Anahit" name="sounds" value="Anahit" checked>
+    <label for="Anahit">Anahit</label>
+    <input type="radio" id="Tigran" name="sounds" value="Tigran">
+    <label for="Tigran">Tigran</label>
+    <input type="radio" id="Sound Off" name="sounds" value="Sound Off">
+    <label for="Sound Off">Sound Off</label>
+    <script>
+        let numbers_disp = Array.from({ length: 90 }, (_, i) => i + 1);
+        let numbers = Array.from({ length: 90 }, (_, i) => i + 1);
+        let interval = 500;
+        let running = false;
+        let timeout;
+        let lastNumbers = [];
+        let allCards = {
+            1: [1, 3, 12, 23, 25, 34, 36, 41, 49, 50, 66, 63, 72, 76, 81],
+            2: [1, 5, 19, 23, 33, 36, 48, 52, 54, 67, 66, 71, 72, 80, 88],
+            3: [1, 16, 19, 24, 33, 38, 48, 50, 54, 61, 66, 73, 75, 81, 84],
+            4: [2, 16, 13, 29, 35, 32, 43, 49, 57, 51, 60, 66, 79, 83, 86],
+            5: [2, 14, 12, 27, 20, 31, 39, 48, 56, 51, 60, 79, 77, 88, 85],
+            6: [2, 5, 17, 13, 25, 29, 37, 35, 43, 52, 56, 68, 64, 78, 86],
+            7: [2, 9, 17, 12, 21, 24, 38, 43, 46, 59, 60, 65, 73, 81, 87],
+            8: [3, 12, 15, 22, 27, 30, 49, 42, 53, 58, 67, 77, 76, 88, 87],
+            9: [3, 16, 14, 25, 37, 39, 41, 50, 57, 61, 62, 78, 74, 90, 85],
+            10: [3, 6, 18, 11, 23, 28, 34, 30, 48, 56, 52, 65, 64, 72, 85],
+            11: [4, 11, 16, 29, 38, 42, 40, 57, 53, 65, 67, 73, 74, 87, 80],
+            12: [4, 10, 18, 26, 21, 34, 32, 45, 40, 51, 57, 69, 72, 80, 89],
+            13: [4, 8, 13, 10, 21, 26, 39, 45, 41, 53, 61, 73, 75, 88, 81],
+            14: [5, 19, 28, 22, 30, 37, 44, 46, 54, 58, 69, 71, 75, 82, 90],
+            15: [5, 17, 24, 37, 31, 42, 40, 55, 58, 68, 63, 70, 74, 89, 82],
+            16: [6, 11, 28, 20, 34, 32, 47, 45, 53, 51, 63, 70, 77, 89, 86],
+            17: [7, 15, 19, 22, 20, 38, 36, 47, 54, 50, 69, 76, 78, 84, 90],
+            18: [7, 4, 10, 13, 29, 27, 30, 31, 44, 42, 56, 68, 79, 75, 83],
+            19: [7, 9, 11, 23, 36, 31, 44, 47, 59, 60, 63, 71, 74, 85, 83],
+            20: [8, 15, 18, 26, 22, 35, 49, 40, 55, 58, 69, 64, 79, 84, 82],
+            21: [8, 6, 14, 28, 20, 39, 41, 46, 55, 62, 65, 70, 76, 82, 90],
+            22: [8, 6, 17, 10, 24, 35, 32, 43, 52, 55, 61, 68, 70, 86, 83],
+            23: [9, 1, 14, 27, 25, 33, 44, 46, 59, 62, 67, 71, 77, 87, 80],
+            24: [9, 7, 15, 18, 26, 21, 33, 47, 45, 59, 64, 62, 78, 89, 84],
+            T01: [90, 89, 88, 87, 86, 81],
+        };
+        let selectedCards = {};
+        let totalWins = {};
+        let checkedNumbers = new Set();
+        let playedYellowCards = new Set();
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function createGrid() {
+            let grid = document.getElementById("grid");
+            grid.innerHTML = "";
+            for (let i = 0; i < 90; i++) {
+                let div = document.createElement("div");
+                div.className = "grid-item";
+                div.id = "cell-" + (i + 1);
+                grid.appendChild(div);
+            }
+        }
+
+        function createCards() {
+            let container = document.getElementById("cards");
+            container.innerHTML = "";
+            for (let id in selectedCards) {
+                let div = document.createElement("div");
+                div.className = "card";
+                div.id = "card-" + id;
+                div.innerText = `Քարտ ${id}`;
+                container.appendChild(div);
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'w') {
+                selectCards();
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'q') {
+                refreshContent();
+            }
+        });
+
+        function selectCards() {
+            let input = document.getElementById("cardInput").value;
+            let ids = input.split(",").map(id => id.trim()).filter(id => allCards[id]);
+            selectedCards = {};
+            ids.forEach(id => selectedCards[id] = allCards[id]);
+            createCards();
+        }
+
+        function checkCards() {
+            for (let id in selectedCards) {
+                let missingNumbers = selectedCards[id].filter(num => !checkedNumbers.has(num)).length;
+                let cardElement = document.getElementById("card-" + id);
+
+                if (missingNumbers === 0) {
+                    cardElement.classList.remove("yellow");
+                    cardElement.classList.add("green");
+                    totalWins[id] = (totalWins[id] || 0) + 1;
+                    playWinSound();
+                    stopGame();
+                } else if (missingNumbers === 1 && !cardElement.classList.contains("yellow")) {
+                    cardElement.classList.add("yellow");
+                    if (!playedYellowCards.has(id)) {
+                        playedYellowCards.add(id);
+                        playWaitSound();
+                    }
+                }
+            }
+            updateWinStats();
+        }
+
+        function updateWinStats() {
+            let dropdown = document.getElementById("winStatsDropdown");
+            dropdown.innerHTML = '<option value="">Հաղթանակների վիճակագրություն</option>';
+            for (let id in allCards) {
+                let wins = totalWins[id] || 0;
+                let option = document.createElement("option");
+                option.value = id;
+                option.text = `Քարտ ${id}: հաղթանակ ${wins}`;
+                dropdown.appendChild(option);
+            }
+        }
+
+        function playWinSound() {
+            let audio = new Audio('../Audio/sounds/win.mp3');
+            audio.play();
+        }
+
+        function playWaitSound() {
+            let audio = new Audio('../Audio/sounds/wait2.mp3');
+            audio.play();
+        }
+
+        function playStartSound() {
+            let audio = new Audio('../Audio/sounds/start.mp3');
+            audio.play();
+        }
+
+        function getSelectedSoundSource() {
+            let selectedSoundSource = document.querySelector('input[name="sounds"]:checked').value;
+            return selectedSoundSource;
+        }
+
+        let audioPlayer = new Audio();
+        function playNumberSound(num) {
+            let soundSource = getSelectedSoundSource();
+            if (soundSource !== "Sound Off") {
+                audioPlayer.src = `../Audio/sounds/${soundSource}/${num}.mp3`;
+                audioPlayer.play().catch(error => {
+                    console.log("Ձայնը չի նվագարկվել:", error);
+                });
+            }
+        }
+ 
+        function showNumber() {
+            if (!running || numbers.length === 0) {
+                running = false;
+                document.getElementById("toggleButton").innerText = "Սկսել";
+                return;
+            }
+
+            let num = numbers.pop();
+            checkedNumbers.add(num);
+
+            playNumberSound(num);
+
+            let container = document.getElementById("number-container");
+            container.style.opacity = "1";
+            container.style.transform = "scale(3)";
+            container.innerText = num;
+
+            setTimeout(() => {
+                container.style.transform = "scale(1)";
+            }, 300);
+
+            setTimeout(() => {
+                container.style.opacity = "0";
+                let cell = document.getElementById("cell-" + num);
+
+                lastNumbers.push(cell);
+                if (lastNumbers.length > 3) {
+                    lastNumbers.shift().className = "grid-item";
+                }
+
+                cell.className = "grid-item red-medium";
+                if (lastNumbers.length > 1) lastNumbers[lastNumbers.length - 2].className = "grid-item red-light";
+                if (lastNumbers.length > 2) lastNumbers[lastNumbers.length - 3].className = "grid-item red-dark";
+
+                cell.innerText = num;
+                checkCards();
+                timeout = setTimeout(showNumber, interval);
+            }, 1000);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'e') {
+                toggleShow();
+            }
+        });
+
+        function toggleShow() {
+            let button = document.getElementById("toggleButton");
+            if (!running) {
+                running = true;
+                button.innerText = "Կանգնեցնել";
+                shuffleArray(numbers);
+                showNumber();
+                playStartSound();
+            } else {
+                running = false;
+                button.innerText = "Սկսել";
+                clearTimeout(timeout);
+            }
+        }
+
+        function stopGame() {
+            running = false;
+            document.getElementById("toggleButton").innerText = "Սկսել";
+            clearTimeout(timeout);
+        }
+
+        function refreshContent() {
+            let numberContainer = document.getElementById("number-container");
+            let grid = document.getElementById("grid");
+            let cards = document.getElementById("cards");
+
+            numberContainer.innerText = "";
+            createGrid();
+            selectedCards = {};
+            createCards();
+
+            numbers = Array.from({ length: 90 }, (_, i) => i + 1);
+            checkedNumbers.clear();
+            playedYellowCards.clear();
+        }
+
+        function updateSpeed(value) {
+            interval = parseInt(value);
+            document.getElementById("speedValue").innerText = value + "ms";
+        }
+
+        createGrid();
+        updateWinStats();
+    </script>
+</body>
+</html>
