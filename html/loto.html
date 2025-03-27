@@ -198,27 +198,27 @@
             createCards();
         }
 
-        function checkCards() {
-            for (let id in selectedCards) {
-                let missingNumbers = selectedCards[id].filter(num => !checkedNumbers.has(num)).length;
-                let cardElement = document.getElementById("card-" + id);
+function checkCards() {
+    for (let id in selectedCards) {
+        let missingNumbers = selectedCards[id].filter(num => !checkedNumbers.has(num)).length;
+        let cardElement = document.getElementById("card-" + id);
 
-                if (missingNumbers === 0) {
-                    cardElement.classList.remove("yellow");
-                    cardElement.classList.add("green");
-                    totalWins[id] = (totalWins[id] || 0) + 1;
-                    playWinSound();
-                    stopGame();
-                } else if (missingNumbers === 1 && !cardElement.classList.contains("yellow")) {
-                    cardElement.classList.add("yellow");
-                    if (!playedYellowCards.has(id)) {
-                        playedYellowCards.add(id);
-                        playWaitSound();
-                    }
-                }
+        if (missingNumbers === 0) {
+            cardElement.classList.remove("yellow");
+            cardElement.classList.add("green");
+            totalWins[id] = (totalWins[id] || 0) + 1;
+            playWinSound(); // Նվագարկել անմիջապես
+            stopGame();
+        } else if (missingNumbers === 1 && !cardElement.classList.contains("yellow")) {
+            cardElement.classList.add("yellow");
+            if (!playedYellowCards.has(id)) {
+                playedYellowCards.add(id);
+                playWaitSound(); // Նվագարկել անմիջապես
             }
-            updateWinStats();
         }
+    }
+    updateWinStats();
+}
 
         function updateWinStats() {
             let dropdown = document.getElementById("winStatsDropdown");
@@ -264,45 +264,48 @@ function playWaitSound() {
             return selectedSoundSource;
         }
 
-        function showNumber() {
-            if (!running || numbers.length === 0) {
-                running = false;
-                document.getElementById("toggleButton").innerText = "Սկսել";
-                return;
-            }
+function showNumber() {
+    if (!running || numbers.length === 0) {
+        running = false;
+        document.getElementById("toggleButton").innerText = "Սկսել";
+        return;
+    }
 
-            let num = numbers.pop();
-            checkedNumbers.add(num);
+    let num = numbers.pop();
+    checkedNumbers.add(num);
 
-            playNumberSound(num);
+    let container = document.getElementById("number-container");
+    container.style.opacity = "1";
+    container.style.transform = "scale(3)";
+    container.innerText = num;
 
-            let container = document.getElementById("number-container");
-            container.style.opacity = "1";
-            container.style.transform = "scale(3)";
-            container.innerText = num;
+    // Նվագարկել ձայնը անմիջապես
+    playNumberSound(num);
 
-            setTimeout(() => {
-                container.style.transform = "scale(1)";
-            }, 300);
+    // Սպասել, մինչև անիմացիան ավարտվի
+    setTimeout(() => {
+        container.style.transform = "scale(1)";
+    }, 300);
 
-            setTimeout(() => {
-                container.style.opacity = "0";
-                let cell = document.getElementById("cell-" + num);
+    // Հաշվի առնել ձայնի տևողությունը (օրինակ՝ 1 վայրկյան)
+    setTimeout(() => {
+        container.style.opacity = "0";
+        let cell = document.getElementById("cell-" + num);
 
-                lastNumbers.push(cell);
-                if (lastNumbers.length > 3) {
-                    lastNumbers.shift().className = "grid-item";
-                }
-
-                cell.className = "grid-item red-medium";
-                if (lastNumbers.length > 1) lastNumbers[lastNumbers.length - 2].className = "grid-item red-light";
-                if (lastNumbers.length > 2) lastNumbers[lastNumbers.length - 3].className = "grid-item red-dark";
-
-                cell.innerText = num;
-                checkCards();
-                timeout = setTimeout(showNumber, interval);
-            }, 1000);
+        lastNumbers.push(cell);
+        if (lastNumbers.length > 3) {
+            lastNumbers.shift().className = "grid-item";
         }
+
+        cell.className = "grid-item red-medium";
+        if (lastNumbers.length > 1) lastNumbers[lastNumbers.length - 2].className = "grid-item red-light";
+        if (lastNumbers.length > 2) lastNumbers[lastNumbers.length - 3].className = "grid-item red-dark";
+
+        cell.innerText = num;
+        checkCards();
+        timeout = setTimeout(showNumber, interval);
+    }, 1000); // Կարգավորելի ժամանակ՝ կախված ձայնի տևողությունից
+}
 
         document.addEventListener('keydown', function(event) {
             if (event.key === 'e') {
