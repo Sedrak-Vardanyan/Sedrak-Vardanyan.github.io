@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARM հայերեն ստեղնաշար macOS-ի համար</title>
+  <style>
+    :root {
+      --bg: #f7f5ff;
+      --ink: #0c1033;
+      --muted: #62677f;
+      --card: rgba(255, 255, 255, 0.72);
+      --stroke: rgba(123, 101, 235, 0.22);
+      --purple: #6952e8;
+      --purple2: #b75cf0;
+      --deep: #21106f;
+      --green: #21a65b;
+      --shadow: 0 22px 70px rgba(52, 37, 118, 0.18);
+      --soft-shadow: 0 10px 35px rgba(41, 29, 88, 0.12);
+      --radius: 28px;
+      --top-panel-height: 372px;
+      --bottom-panel-height: 164px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 78% 8%, rgba(188, 149, 255, 0.40), transparent 34%),
+        radial-gradient(circle at 18% 85%, rgba(105, 82, 232, 0.20), transparent 32%),
+        linear-gradient(135deg, #ffffff 0%, var(--bg) 46%, #f0edff 100%);
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: min(1480px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 34px 0 40px;
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .glow::before, .glow::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.5;
+    }
+
+    .glow::before {
+      top: 35px;
+      right: 120px;
+      background: radial-gradient(circle, rgba(183, 92, 240, 0.34), transparent 68%);
+    }
+
+    .glow::after {
+      left: -80px;
+      bottom: 120px;
+      background: radial-gradient(circle, rgba(105, 82, 232, 0.24), transparent 68%);
+    }
+
+    header, main { position: relative; z-index: 1; }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 34px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .app-icon {
+      width: 170px;
+      height: 170px;
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.12), transparent 24%),
+        linear-gradient(145deg, #201064 0%, #5d38db 48%, #c560f0 100%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: start center;
+      padding-top: 24px;
+      isolation: isolate;
+    }
+
+    .app-icon .letters {
+      color: white;
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 16px rgba(0,0,0,.25);
+      z-index: 2;
+    }
+
+    .mountains {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 88px;
+      background:
+        polygon(0 100%, 20% 58%, 32% 82%, 48% 34%, 62% 72%, 80% 42%, 100% 100%);
+    }
+
+    .mountains::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 0 28%, rgba(255,255,255,.92) 29% 36%, transparent 37%),
+        linear-gradient(25deg, transparent 0 45%, rgba(255,255,255,.55) 46% 53%, transparent 54%),
+        linear-gradient(150deg, #ffffff 0 16%, #dcd7ff 17% 38%, #a99cec 39% 63%, #6a4acb 64% 100%);
+      clip-path: polygon(0 100%, 16% 62%, 30% 83%, 49% 26%, 63% 72%, 80% 40%, 100% 100%);
+      opacity: .95;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 70px);
+      line-height: 0.95;
+      letter-spacing: -3px;
+      color: #080c36;
+    }
+
+    .subtitle {
+      margin: 18px 0 22px;
+      font-size: clamp(18px, 2vw, 29px);
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 36px;
+      color: white;
+      font-weight: 800;
+      font-size: clamp(18px, 1.7vw, 27px);
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--purple), var(--purple2));
+      box-shadow: 0 18px 38px rgba(105,82,232,.25);
+    }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+        gap: 32px;
+        align-items: start;
+      }
+
+      .left-grid {
+        display: grid;
+        gap: 28px;
+        min-width: 0;
+      }
+
+    .feature-card, .shortcut-card, .install-card, .macbook, .keyboard {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .feature-card {
+      height: var(--top-panel-height);
+      padding: 22px;
+      display: grid;
+      align-content: space-between;
+      gap: 14px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .feature .ico, .mini-ico {
+      width: 54px;
+      height: 54px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      font-size: 28px;
+      background: linear-gradient(145deg, #7a61f1, #3220a6);
+      box-shadow: 0 10px 24px rgba(89, 65, 210, .22);
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #4f5570;
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .middle-row {
+      height: var(--bottom-panel-height);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .shortcut-card {
+      height: 100%;
+      min-height: 0;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 60px 1fr 50px;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .shortcut-card strong {
+      display: block;
+      font-size: 19px;
+      margin: 6px 0;
+    }
+
+    .shortcut-card span { color: #30364d; }
+
+    .check {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+      background: var(--green);
+      box-shadow: 0 12px 26px rgba(33,166,91,.25);
+    }
+
+    .right-grid {
+      display: grid;
+      gap: 26px;
+      min-width: 0;
+    }
+
+    .macbook {
+      height: var(--top-panel-height);
+      padding: 20px;
+      border-radius: 26px;
+      display: flex;
+      flex-direction: column;
+      transform: none;
+      transform-origin: center;
+    }
+
+    .screen {
+      flex: 1 1 auto;
+      min-height: 0;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 72% 18%, #ff6aa4, transparent 28%),
+        radial-gradient(circle at 52% 60%, #4c28c9, transparent 42%),
+        linear-gradient(135deg, #d63bb0, #6228dd 48%, #140b70);
+      border: 12px solid #171822;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 22px 50px rgba(19, 16, 61, .26);
+      overflow: hidden;
+    }
+
+    .menubar {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 28px;
+      background: rgba(255,255,255,.72);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 18px;
+      font-size: 12px;
+      color: #191827;
+    }
+
+    .input-menu {
+      position: absolute;
+      top: 56px;
+      right: 52px;
+      width: 245px;
+      padding: 12px;
+      border-radius: 13px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 18px 50px rgba(0,0,0,.25);
+      backdrop-filter: blur(14px);
+    }
+
+    .menu-title { font-size: 13px; margin: 2px 0 8px; color: #111; }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #111;
+    }
+    .menu-item.active { background: linear-gradient(90deg, #765df0, #9b6bff); color: #fff; }
+    .key-badge { width: 24px; height: 22px; border-radius: 5px; display: grid; place-items: center; background: rgba(10,10,20,.12); font-weight: 800; }
+    .active .key-badge { background: rgba(255,255,255,.25); }
+    .tick { margin-left: auto; }
+
+    .dock {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      height: 50px;
+      padding: 7px;
+      display: flex;
+      gap: 7px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.34);
+      backdrop-filter: blur(12px);
+    }
+    .dock i { width: 35px; height: 35px; border-radius: 9px; background: linear-gradient(145deg, #d9f0ff, #5e6dff); display: block; }
+    .dock i:nth-child(2n) { background: linear-gradient(145deg, #ffe0ef, #d85dff); }
+    .dock i:nth-child(3n) { background: linear-gradient(145deg, #fff0b7, #ff7c66); }
+
+    .base {
+      width: 88%;
+      height: 20px;
+      flex: 0 0 20px;
+      margin: 0 auto;
+      border-radius: 0 0 28px 28px;
+      background: linear-gradient(180deg, #c8cad6, #8c91a6);
+      box-shadow: 0 20px 30px rgba(0,0,0,.12);
+    }
+
+    .install-card {
+      height: var(--bottom-panel-height);
+      padding: 20px;
+    }
+
+    .install-card h2 {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 2.4vw, 34px);
+      letter-spacing: -1px;
+    }
+    .install-card p { color: var(--muted); margin: 0 0 14px; font-size: 16px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 22px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+      background: linear-gradient(135deg, #6c55ed, #3420a9);
+      box-shadow: 0 14px 30px rgba(105,82,232,.25);
+    }
+
+    .btn.secondary {
+      color: var(--deep);
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--stroke);
+      box-shadow: none;
+    }
+
+    .install-card .btn {
+      padding: 12px 18px;
+    }
+
+    .keyboard {
+      grid-column: 1 / -1;
+      margin-top: 2px;
+      padding: 12px;
+      border-radius: 20px;
+      background: rgba(245, 245, 249, .86);
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .keyboard::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .keyboard::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: rgba(105, 82, 232, .28);
+    }
+
+    .kb-row {
+      display: flex;
+      gap: 7px;
+      min-width: 860px;
+      margin-bottom: 7px;
+    }
+
+    .kb-row:last-child { margin-bottom: 0; }
+
+    .key {
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 58px;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #fff, #f0f0f5);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #11152f;
+      font-weight: 700;
+      font-size: 22px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .key small {
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      color: #6f7384;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .wide-2 { flex: 2 1 0; justify-content: flex-start; padding-left: 12px; font-size: 13px; }
+    .wide-3 { flex: 3 1 0; justify-content: flex-start; padding-left: 12px; font-size: 13px; }
+    .space { flex: 5 1 0; }
+    .kb-row:last-child .key { font-size: 13px; }
+
+    footer {
+      margin-top: 26px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(90deg, #6c55ed, #4329c1);
+      padding: 18px 24px;
+      border-radius: 16px;
+      font-weight: 800;
+      box-shadow: 0 14px 35px rgba(105,82,232,.24);
+    }
+
+    @media (max-width: 1060px) {
+      .hero-top, .layout { grid-template-columns: 1fr; }
+      .app-icon { width: 128px; height: 128px; border-radius: 28px; }
+      .app-icon .letters { font-size: 38px; }
+      .feature-card, .macbook, .middle-row, .install-card { height: auto; }
+      .middle-row { grid-template-columns: 1fr; }
+      .macbook { transform: none; }
+      .screen { flex: none; min-height: 320px; }
+      .base { flex: none; height: 24px; }
+      .key { min-height: 52px; font-size: 20px; }
+      .kb-row:last-child .key { font-size: 13px; }
+    }
+
+    @media (max-width: 620px) {
+      .page { width: min(100% - 24px, 1480px); padding-top: 22px; }
+      h1 { letter-spacing: -1px; }
+      .pill { width: 100%; justify-content: center; padding: 15px 18px; }
+      .feature-card, .install-card { padding: 20px; }
+      .feature { grid-template-columns: 48px 1fr; gap: 14px; }
+      .feature .ico, .mini-ico { width: 46px; height: 46px; font-size: 23px; }
+      .shortcut-card { grid-template-columns: 50px 1fr; }
+      .check { display: none; }
+      .screen { min-height: 280px; border-width: 10px; }
+      .input-menu { right: 18px; width: 220px; }
+      .keyboard { padding: 8px; }
+      .kb-row { gap: 5px; min-width: 760px; }
+      .key { min-height: 42px; font-size: 16px; }
+      .key small { left: 5px; top: 4px; font-size: 9px; }
+      .wide-2, .wide-3, .kb-row:last-child .key { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="glow"></div>
+
+    <header class="hero-top">
+      <div class="app-icon" aria-label="ARM icon">
+        <div class="letters">ԱՐՄ</div>
+        <div class="mountains"></div>
+      </div>
+
+      <div>
+        <h1>ARM հայերեն ստեղնաշար</h1>
+        <p class="subtitle">Ստանդարտ և հարմարավետ դասավորություն macOS-ի համար</p>
+        <div class="pill">Գրի՛ր հայերեն, աշխատի՛ր սիրով 🚀</div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left-grid">
+        <div class="feature-card">
+          <div class="feature">
+            <div class="ico">ա</div>
+            <div>
+              <h3>Ճիշտ դասավորություն</h3>
+              <p>Հայերեն տառերը տեղադրված են պարզ, հիշվող և արագ գրելու համար հարմար ձևով։</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ico">⌘</div>
+            <div>
+              <h3>Shortcut-ները անգլերեն</h3>
+              <p>Command, Option և Control կոմբինացիաները աշխատում են macOS-ի ստանդարտ ձևով։</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ico">⇧</div>
+            <div>
+              <h3>Shift-ով մեծատառեր</h3>
+              <p>Բոլոր տառերը Shift-ով գրվում են մեծատառերով՝ բնական և կանխատեսելի վարքագծով։</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ico">⌨</div>
+            <div>
+              <h3>macOS-ի համար</h3>
+              <p>Տեղադրվում է որպես սովորական custom keyboard layout և երևում է Input Sources-ում։</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="middle-row">
+          <div class="shortcut-card">
+            <div class="mini-ico">⌨</div>
+            <div>
+              <strong>Command + C</strong><span>Copy</span>
+              <strong>Command + V</strong><span>Paste</span>
+              <strong>Command + Z</strong><span>Undo</span>
+            </div>
+            <div class="check">✓</div>
+          </div>
+
+          <div class="shortcut-card">
+            <div class="mini-ico">Ա</div>
+            <div>
+              <strong>c → ց</strong>
+              <strong>u → ու</strong>
+              <strong>q → ք</strong>
+            </div>
+            <div class="check">✓</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="right-grid">
+        <div class="macbook">
+          <div class="screen">
+            <div class="menubar"><span> ARM Keyboard</span><span>Sun 12:00</span></div>
+            <div class="input-menu">
+              <div class="menu-title">Input Sources</div>
+              <div class="menu-item active"><span class="key-badge">ԱՐՄ</span>ARM <span class="tick">✓</span></div>
+              <div class="menu-item"><span class="key-badge">A</span>ABC</div>
+              <div class="menu-item"><span class="key-badge">⌨</span>Show Keyboard Viewer</div>
+              <div class="menu-item">Open Keyboard Settings...</div>
+            </div>
+            <div class="dock"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="base"></div>
+        </div>
+
+        <div class="install-card">
+          <h2>Մեկ տեղադրում և պատրաստ ✨</h2>
+          <p>Պարզ տեղադրում `.pkg` ֆայլի միջոցով՝ առանց բարդ քայլերի։</p>
+          <div class="actions">
+            <a class="btn" href="#download">⬇ Ներբեռնել</a>
+            <a class="btn secondary" href="#install">📦 Տեղադրել</a>
+            <a class="btn secondary" href="#help">⌨ Օգտագործել</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="keyboard" aria-label="ARM keyboard preview">
+        <div class="kb-row">
+          <div class="key"><small>~</small>`</div><div class="key"><small>!</small>է</div><div class="key"><small>@</small>թ</div><div class="key"><small>#</small>փ</div><div class="key"><small>$</small>ձ</div><div class="key"><small>%</small>ջ</div><div class="key"><small>^</small>ւ</div><div class="key"><small>&amp;</small>և</div><div class="key"><small>*</small>ր</div><div class="key"><small>(</small>չ</div><div class="key"><small>)</small>ճ</div><div class="key"><small>-</small>-</div><div class="key"><small>+</small>ժ</div><div class="key">delete</div>
+        </div>
+        <div class="kb-row">
+          <div class="key wide-2">tab</div><div class="key">ք</div><div class="key">ո</div><div class="key">ե</div><div class="key">ռ</div><div class="key">տ</div><div class="key">ը</div><div class="key">ու</div><div class="key">ի</div><div class="key">օ</div><div class="key">պ</div><div class="key">խ</div><div class="key">ծ</div><div class="key">շ</div>
+        </div>
+        <div class="kb-row">
+          <div class="key wide-2">caps</div><div class="key">ա</div><div class="key">ս</div><div class="key">դ</div><div class="key">ֆ</div><div class="key">գ</div><div class="key">հ</div><div class="key">յ</div><div class="key">կ</div><div class="key">լ</div><div class="key">;</div><div class="key">՛</div><div class="key wide-2">return</div>
+        </div>
+        <div class="kb-row">
+          <div class="key wide-3">shift</div><div class="key">զ</div><div class="key">ղ</div><div class="key">ց</div><div class="key">վ</div><div class="key">բ</div><div class="key">ն</div><div class="key">մ</div><div class="key">«</div><div class="key">․</div><div class="key">՞</div><div class="key wide-3">shift</div>
+        </div>
+        <div class="kb-row">
+          <div class="key">fn</div><div class="key">control</div><div class="key">option</div><div class="key wide-2">command</div><div class="key space"></div><div class="key wide-2">command</div><div class="key">option</div><div class="key">◀</div><div class="key">▲▼</div><div class="key">▶</div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="download">Ստեղծվել է սիրով՝ հայերենով արագ և հարմար գրելու համար 💜</footer>
+  </div>
+</body>
+</html>
