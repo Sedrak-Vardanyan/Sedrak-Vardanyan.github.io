@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARM Keyboard տեղադրման ուղեցույց macOS-ի համար</title>
+  <style>
+    :root {
+      --bg: #f7f5ff;
+      --ink: #0c1033;
+      --muted: #62677f;
+      --card: rgba(255, 255, 255, 0.76);
+      --stroke: rgba(123, 101, 235, 0.22);
+      --purple: #6952e8;
+      --purple2: #b75cf0;
+      --deep: #21106f;
+      --green: #21a65b;
+      --orange: #ff9b3d;
+      --red: #e64949;
+      --shadow: 0 22px 70px rgba(52, 37, 118, 0.18);
+      --soft-shadow: 0 10px 35px rgba(41, 29, 88, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(188, 149, 255, 0.42), transparent 32%),
+        radial-gradient(circle at 18% 86%, rgba(105, 82, 232, 0.21), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, var(--bg) 46%, #f0edff 100%);
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 42px;
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .glow::before,
+    .glow::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.48;
+    }
+
+    .glow::before {
+      top: 20px;
+      right: 80px;
+      background: radial-gradient(circle, rgba(183, 92, 240, 0.34), transparent 68%);
+    }
+
+    .glow::after {
+      left: -95px;
+      bottom: 120px;
+      background: radial-gradient(circle, rgba(105, 82, 232, 0.24), transparent 68%);
+    }
+
+    header,
+    main,
+    footer { position: relative; z-index: 1; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 168px 1fr;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .app-icon {
+      width: 150px;
+      height: 150px;
+      border-radius: 32px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.13), transparent 24%),
+        linear-gradient(145deg, #201064 0%, #5d38db 48%, #c560f0 100%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: start center;
+      padding-top: 22px;
+      isolation: isolate;
+    }
+
+    .letters {
+      color: white;
+      font-size: 43px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 16px rgba(0,0,0,.25);
+      z-index: 2;
+    }
+
+    .mountains {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 78px;
+    }
+
+    .mountains::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 0 28%, rgba(255,255,255,.92) 29% 36%, transparent 37%),
+        linear-gradient(25deg, transparent 0 45%, rgba(255,255,255,.55) 46% 53%, transparent 54%),
+        linear-gradient(150deg, #ffffff 0 16%, #dcd7ff 17% 38%, #a99cec 39% 63%, #6a4acb 64% 100%);
+      clip-path: polygon(0 100%, 16% 62%, 30% 83%, 49% 26%, 63% 72%, 80% 40%, 100% 100%);
+      opacity: .95;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .96;
+      letter-spacing: -2.8px;
+      color: #080c36;
+    }
+
+    .subtitle {
+      margin: 16px 0 20px;
+      font-size: clamp(17px, 2vw, 25px);
+      color: var(--muted);
+      font-weight: 500;
+      max-width: 850px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 26px;
+      color: white;
+      font-weight: 850;
+      font-size: clamp(16px, 1.7vw, 22px);
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--purple), var(--purple2));
+      box-shadow: 0 18px 38px rgba(105,82,232,.25);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .steps-card { padding: 26px; }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 31px;
+      letter-spacing: -1px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(123, 101, 235, 0.16);
+    }
+
+    .step:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .num {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      font-size: 23px;
+      background: linear-gradient(145deg, #7a61f1, #3220a6);
+      box-shadow: 0 10px 24px rgba(89, 65, 210, .22);
+    }
+
+    .step h3 {
+      margin: 0 0 7px;
+      font-size: 22px;
+    }
+
+    .step p {
+      margin: 0;
+      color: #4f5570;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .code {
+      display: inline-flex;
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: rgba(105,82,232,.09);
+      color: #33209f;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .visual-card { padding: 22px; overflow: hidden; }
+
+    .mac-window {
+      border-radius: 24px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(12,16,51,.10);
+      box-shadow: 0 24px 60px rgba(23, 18, 64, .16);
+      overflow: hidden;
+    }
+
+    .window-top {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 18px;
+      background: rgba(245,245,250,.92);
+      border-bottom: 1px solid rgba(12,16,51,.08);
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: block; }
+    .red { background: #ff5f57; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #28c840; }
+    .win-title { margin-left: 8px; color: #666b80; font-size: 13px; font-weight: 700; }
+
+    .download-box {
+      padding: 32px 24px 26px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .pkg-icon {
+      width: 132px;
+      height: 108px;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.6), transparent 34%),
+        linear-gradient(145deg, #e7e2ff, #ffffff);
+      border: 1px solid rgba(105,82,232,.22);
+      box-shadow: 0 16px 34px rgba(105,82,232,.18);
+      position: relative;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+    }
+
+    .pkg-icon::before {
+      content: "📦";
+      font-size: 48px;
+      filter: drop-shadow(0 8px 12px rgba(52,37,118,.12));
+    }
+
+    .pkg-name {
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .pkg-note {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+      max-width: 430px;
+    }
+
+    .warning {
+      margin: 0 24px 24px;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,155,61,.16), rgba(255,255,255,.72));
+      border: 1px solid rgba(255,155,61,.32);
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .warn-ico {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 26px;
+      box-shadow: 0 10px 24px rgba(255,155,61,.25);
+    }
+
+    .warning strong { display: block; font-size: 17px; margin-bottom: 4px; }
+    .warning span { color: #6b5a3c; font-size: 14px; line-height: 1.35; }
+
+    .flow {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .flow-item {
+      min-height: 145px;
+      padding: 16px 12px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 10px 24px rgba(41, 29, 88, 0.08);
+      text-align: center;
+      position: relative;
+    }
+
+    .flow-item::after {
+      content: "→";
+      position: absolute;
+      right: -13px;
+      top: 42%;
+      color: #7d64f0;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .flow-item:last-child::after { display: none; }
+    .flow-icon { font-size: 34px; margin-bottom: 10px; }
+    .flow-item strong { display: block; font-size: 15px; margin-bottom: 6px; }
+    .flow-item span { display: block; color: var(--muted); font-size: 13px; line-height: 1.3; }
+
+    .privacy-card {
+      grid-column: 1 / -1;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .settings-shot {
+      border-radius: 22px;
+      background: #f5f5fa;
+      border: 1px solid rgba(12,16,51,.10);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 16px 38px rgba(23, 18, 64, .11);
+      overflow: hidden;
+    }
+
+    .settings-bar {
+      padding: 13px 16px;
+      font-weight: 850;
+      background: white;
+      border-bottom: 1px solid rgba(12,16,51,.08);
+    }
+
+    .settings-content { padding: 18px; }
+
+    .setting-row {
+      padding: 16px;
+      border-radius: 16px;
+      background: white;
+      border: 1px solid rgba(12,16,51,.08);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .setting-row:last-child { margin-bottom: 0; }
+    .setting-row small { display: block; color: var(--muted); margin-top: 4px; line-height: 1.35; }
+
+    .open-btn {
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #6c55ed, #3420a9);
+      color: white;
+      font-weight: 850;
+      white-space: nowrap;
+      box-shadow: 0 12px 25px rgba(105,82,232,.2);
+    }
+
+    .privacy-text h2 { margin: 0 0 12px; font-size: 33px; letter-spacing: -1px; }
+    .privacy-text p { color: var(--muted); font-size: 17px; line-height: 1.5; margin: 0 0 16px; }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mini-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #30364d;
+      font-weight: 700;
+    }
+
+    .mini-list b {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: white;
+      flex: 0 0 auto;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 850;
+      color: white;
+      background: linear-gradient(135deg, #6c55ed, #3420a9);
+      box-shadow: 0 14px 30px rgba(105,82,232,.25);
+    }
+
+    .btn.secondary {
+      color: var(--deep);
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--stroke);
+      box-shadow: none;
+    }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(90deg, #6c55ed, #4329c1);
+      padding: 18px 24px;
+      border-radius: 16px;
+      font-weight: 850;
+      box-shadow: 0 14px 35px rgba(105,82,232,.24);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid,
+      .privacy-card { grid-template-columns: 1fr; }
+      .app-icon { width: 125px; height: 125px; border-radius: 27px; }
+      .letters { font-size: 36px; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .flow-item::after { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .page { width: min(100% - 24px, 1240px); padding-top: 22px; }
+      h1 { letter-spacing: -1.2px; }
+      .pill,
+      .btn { width: 100%; justify-content: center; }
+      .steps-card,
+      .visual-card,
+      .privacy-card { padding: 18px; }
+      .step { grid-template-columns: 48px 1fr; gap: 14px; }
+      .num { width: 46px; height: 46px; border-radius: 13px; font-size: 19px; }
+      .step h3 { font-size: 19px; }
+      .flow { grid-template-columns: 1fr; }
+      .warning { margin: 0 16px 18px; grid-template-columns: 1fr; text-align: center; place-items: center; }
+      .setting-row { flex-direction: column; align-items: flex-start; }
+      .open-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="glow"></div>
+
+    <header class="hero">
+      <div class="app-icon" aria-label="ARM icon">
+        <div class="letters">ԱՐՄ</div>
+        <div class="mountains"></div>
+      </div>
+      <div>
+        <h1>ARM Keyboard-ի տեղադրում macOS-ում</h1>
+        <p class="subtitle">Եթե macOS-ը ցույց է տալիս, որ չի կարող ստուգել `.pkg` ֆայլը, սա նշանակում է՝ ֆայլը ստորագրված կամ notarized չէ Apple Developer ID-ով։ Տեղադրումը կարելի է շարունակել միայն եթե վստահում եք ֆայլին։</p>
+        <div class="pill">Քայլ առ քայլ՝ պարզ ու հասկանալի ✨</div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card steps-card">
+        <h2 class="section-title">Տեղադրման քայլերը</h2>
+
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <h3>Ներբեռնեք ֆայլը</h3>
+            <p>Սեղմեք <span class="code">Ներբեռնել</span> կոճակը և պահեք <span class="code">ARM_Keyboard.pkg</span> ֆայլը Mac-ի մեջ։</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <h3>Բացեք `.pkg` ֆայլը</h3>
+            <p>Կրկնակի սեղմեք ֆայլի վրա։ Եթե Installer-ը բացվեց՝ շարունակեք սովորական տեղադրումը։</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <h3>Եթե հայտնվում է անվտանգության զգուշացում</h3>
+            <p>Փակեք զգուշացումը, բացեք <span class="code">System Settings</span> → <span class="code">Privacy & Security</span> և ներքևում սեղմեք <span class="code">Open Anyway</span> կամ <span class="code">Allow</span>։</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <h3>Ավարտեք տեղադրումը</h3>
+            <p>Installer-ում սեղմեք Continue → Install, մուտքագրեք Mac-ի գաղտնաբառը և սպասեք մինչև տեղադրումը ավարտվի։</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <h3>Միացրեք ստեղնաշարը</h3>
+            <p>Բացեք <span class="code">Keyboard</span> → <span class="code">Input Sources</span>, ավելացրեք ARM Keyboard-ը և ընտրեք այն վերևի input menu-ից։</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card visual-card">
+        <div class="mac-window">
+          <div class="window-top">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="win-title">Downloads / ARM_Keyboard.pkg</span>
+          </div>
+
+          <div class="download-box">
+            <div class="pkg-icon"></div>
+            <div class="pkg-name">ARM_Keyboard.pkg</div>
+            <div class="pkg-note">Տեղադրման փաթեթ macOS-ի համար։ Բացեք միայն եթե ֆայլը ներբեռնել եք պաշտոնական էջից։</div>
+          </div>
+
+          <div class="warning">
+            <div class="warn-ico">!</div>
+            <div>
+              <strong>macOS-ը կարող է ցույց տալ զգուշացում</strong>
+              <span>«Apple не удалось подтвердить…» հաղորդագրությունը նշանակում է, որ փաթեթը դեռ չունի Apple-ի պաշտոնական ստորագրում/notarization։</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow">
+          <div class="flow-item">
+            <div class="flow-icon">⬇</div>
+            <strong>Ներբեռնել</strong>
+            <span>Ստացեք `.pkg` ֆայլը կայքից</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-icon">📦</div>
+            <strong>Բացել</strong>
+            <span>Սեղմեք installer-ի վրա</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-icon">🛡</div>
+            <strong>Թույլատրել</strong>
+            <span>Privacy & Security → Open Anyway</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-icon">✅</div>
+            <strong>Ավարտել</strong>
+            <span>Միացրեք ARM Input Source-ը</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card privacy-card" id="security">
+        <div class="privacy-text">
+          <h2>Եթե ֆայլը չի բացվում</h2>
+          <p>macOS Gatekeeper-ը կարող է արգելափակել ինտերնետից ներբեռնված չստորագրված `.pkg` ֆայլերը։ Այդ դեպքում պետք է բացել հենց System Settings-ից։</p>
+          <ul class="mini-list">
+            <li><b>1</b><span>Բացեք <span class="code">System Settings</span></span></li>
+            <li><b>2</b><span>Գնացեք <span class="code">Privacy & Security</span></span></li>
+            <li><b>3</b><span>Սեղմեք <span class="code">Open Anyway</span> կամ <span class="code">Allow</span></span></li>
+            <li><b>4</b><span>Հաստատեք գաղտնաբառով կամ Touch ID-ով</span></li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="ARM_Keyboard.pkg" download>⬇ Ներբեռնել ARM Keyboard</a>
+            <a class="btn secondary" href="Keyboard.html">← Վերադառնալ էջ</a>
+          </div>
+        </div>
+
+        <div class="settings-shot" aria-label="Privacy and Security visual guide">
+          <div class="settings-bar">System Settings · Privacy & Security</div>
+          <div class="settings-content">
+            <div class="setting-row">
+              <div>
+                <strong>Security</strong>
+                <small>Allow applications downloaded from identified developers and trusted sources.</small>
+              </div>
+            </div>
+            <div class="setting-row">
+              <div>
+                <strong>“ARM_Keyboard.pkg” was blocked</strong>
+                <small>macOS blocked the package because it could not verify the developer.</small>
+              </div>
+              <button class="open-btn">Open Anyway</button>
+            </div>
+            <div class="setting-row">
+              <div>
+                <strong>Installer</strong>
+                <small>Continue → Install → Password / Touch ID → Done</small>
+              </div>
+              <button class="open-btn">Continue</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>ARM Keyboard · macOS-ի համար հայերեն ստեղնաշարի տեղադրման ուղեցույց 💜</footer>
+  </div>
+</body>
+</html>
